@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register & Login - CrowdFarm</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body class="font-inter bg-gradient-to-b from-emerald-50 to-white">
+    <!-- Navbar -->
+    <header class="bg-emerald-600 text-white sticky top-0 z-50 shadow-xl">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <img src="Artboard 1.png" alt="CrowdFarm Logo" class="h-12 w-12 rounded-full object-cover">
+                <h1 class="text-3xl font-bold tracking-tight">Harvest Together</h1>
+            </div>
+            <nav class="hidden md:flex space-x-10">
+                <a href="index.html#home" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                <a href="index.html#projects" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Projects</a>
+                <a href="index.html#about" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">About</a>
+                <a href="index.html#contact" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Contact</a>
+                <a href="register.html" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Get Started</a>
+            </nav>
+            <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <i class="fas fa-bars text-2xl text-lime-300"></i>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-600 text-white px-4 py-6">
+            <a href="index.html#home" class="block py-2 text-lg hover:text-lime-300">Home</a>
+            <a href="index.html#projects" class="block py-2 text-lg hover:text-lime-300">Projects</a>
+            <a href="index.html#about" class="block py-2 text-lg hover:text-lime-300">About</a>
+            <a href="index.html#contact" class="block py-2 text-lg hover:text-lime-300">Contact</a>
+            <a href="register.html" class="block py-2 text-lg hover:text-lime-300">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-cover bg-center h-[80vh] flex items-center justify-center" style="background-image: url('farmers.avif')">
+        <div class="absolute inset-0 bg-gradient-to-b from-emerald-600/60 to-lime-500/40"></div>
+        <div class="container mx-auto px-4 text-center text-white relative z-10">
+            <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight animate-fade-in">Join Our Sustainable Community</h2>
+            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto">Register or log in to start your journey with CrowdFarm as a Farmer, Investor, or Supporter.</p>
+            <a href="#auth" class="bg-lime-400 text-emerald-900 px-8 py-4 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">Get Started</a>
+        </div>
+    </section>
+
+    <!-- Register/Login Section -->
+    <section id="auth" class="py-20">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-bold text-center mb-12 text-emerald-700">Access Your Account</h2>
+            <div class="max-w-3xl mx-auto perspective-1000">
+                <!-- Card Container -->
+                <div id="card" class="relative w-full h-[650px] transition-transform duration-700 transform-style-preserve-3d">
+                    <!-- Register Form (Front) -->
+                    <div class="card-face front bg-white p-6 rounded-3xl shadow-2xl border-2 border-lime-200 absolute top-0 left-0 w-full h-full">
+                        <!-- Tabs -->
+                        <div class="flex justify-center mb-6">
+                            <button class="tab-btn px-6 py-3 text-lg font-medium text-emerald-600 bg-white border-2 border-lime-200 rounded-l-lg hover:bg-lime-100 transition-colors duration-300 active" onclick="showTab('farmer')">Farmer</button>
+                            <button class="tab-btn px-6 py-3 text-lg font-medium text-emerald-600 bg-white border-2 border-lime-200 hover:bg-lime-100 transition-colors duration-300" onclick="showTab('investor')">Investor</button>
+                            <button class="tab-btn px-6 py-3 text-lg font-medium text-emerald-600 bg-white border-2 border-lime-200 rounded-r-lg hover:bg-lime-100 transition-colors duration-300" onclick="showTab('normal')">Normal Person</button>
+                        </div>
+                        <!-- Forms -->
+                        <div id="farmer" class="tab-content bg-white p-6 rounded-3xl">
+                            <h3 class="text-2xl font-semibold text-emerald-600 mb-4 text-center">Farmer Registration</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="farmer-name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+                                    <input type="text" id="farmer-name" class="w-full p-3 border rounded-lg " placeholder="Your Name" required>
+                                </div>
+                                <div>
+                                    <label for="farmer-email" class="block text-gray-700 font-medium mb-1">Email</label>
+                                    <input type="email" id="farmer-email" class="w-full p-3 border rounded-lg " placeholder="Your Email" required>
+                                </div>
+                                <div>
+                                    <label for="farmer-password" class="block text-gray-700 font-medium mb-1">Password</label>
+                                    <input type="password" id="farmer-password" class="w-full p-3 border rounded-lg " placeholder="Your Password" required>
+                                </div>
+                                <div>
+                                    <label for="farmer-phone" class="block text-gray-700 font-medium mb-1">Phone Number</label>
+                                    <input type="tel" id="farmer-phone" class="w-full p-3 border rounded-lg " placeholder="Your Phone Number" required>
+                                </div>
+                                <div>
+                                    <label for="farm-name" class="block text-gray-700 font-medium mb-1">FIN</label>
+                                    <input type="text" id="farm-name" class="w-full p-3 border rounded-lg " placeholder="Your FIN code" required>
+                                </div>
+                                <div>
+                                    <label for="farm-address" class="block text-gray-700 font-medium mb-1">Farm Address</label>
+                                    <input type="text" id="farm-address" class="w-full p-3 border rounded-lg " placeholder="Your Farm Address" required>
+                                </div>
+                                <div>
+                                    <label for="farm-type" class="block text-gray-700 font-medium mb-1">Farming Type</label>
+                                    <select id="farm-type" class="w-full p-3 border rounded-lg " required>
+                                        <option value="">Select Type</option>
+                                        <option value="organic">Organic</option>
+                                        <option value="livestock">Livestock</option>
+                                        <option value="mixed">Mixed</option>
+                                    </select>
+                                </div>
+                                <div>
+                                    <label for="certification" class="block text-gray-700 font-medium mb-1">Farmer ID</label>
+                                    <input type="text" id="certification" class="w-full p-3 border rounded-lg " placeholder="Your Farmer ID">
+                                </div>
+                            </div>
+                            <button class="mt-4 bg-lime-400 text-emerald-900 px-8 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full" onclick="validateForm('farmer')">Register</button>
+                            <p class="mt-3 text-center text-gray-600">Already have an account? <a href="#" class="text-lime-500 hover:underline" onclick="event.preventDefault(); flipToLogin()">Log in here</a>.</p>
+                        </div>
+                        <div id="investor" class="tab-content hidden bg-white p-6 rounded-3xl">
+                            <h3 class="text-2xl font-semibold text-emerald-600 mb-4 text-center">Investor Registration</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="investor-name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+                                    <input type="text" id="investor-name" class="w-full p-3 border rounded-lg  " placeholder="Your Name" required>
+                                </div>
+                                <div>
+                                    <label for="investor-email" class="block text-gray-700 font-medium mb-1">Email</label>
+                                    <input type="email" id="investor-email" class="w-full p-3 border rounded-lg  " placeholder="Your Email" required>
+                                </div>
+                                <div>
+                                    <label for="investor-password" class="block text-gray-700 font-medium mb-1">Password</label>
+                                    <input type="password" id="investor-password" class="w-full p-3 border rounded-lg " placeholder="Your Password" required>
+                                </div>
+                                <div>
+                                    <label for="investor-phone" class="block text-gray-700 font-medium mb-1">Phone Number</label>
+                                    <input type="tel" id="investor-phone" class="w-full p-3 border rounded-lg " placeholder="Your Phone Number" required>
+                                </div>
+                                <div>
+                                    <label for="budget" class="block text-gray-700 font-medium mb-1">FIN</label>
+                                    <input type="text" id="budget" class="w-full p-3 border rounded-lg " placeholder="Your FIN code" required>
+                                </div>
+                                <div>
+                                    <label for="interest" class="block text-gray-700 font-medium mb-1">Interest Areas</label>
+                                    <select id="interest" class="w-full p-3 border rounded-lg " required>
+                                        <option value="">Select Interest</option>
+                                        <option value="organic">Organic Farming</option>
+                                        <option value="livestock">Livestock</option>
+                                        <option value="tech">Agri-Tech</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <button class="mt-4 bg-lime-400 text-emerald-900 px-8 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full" onclick="validateForm('investor')">Register</button>
+                            <p class="mt-3 text-center text-gray-600">Already have an account? <a href="#" class="text-lime-500 hover:underline" onclick="event.preventDefault(); flipToLogin()">Log in here</a>.</p>
+                        </div>
+                        <div id="normal" class="tab-content hidden bg-white p-6 rounded-3xl">
+                            <h3 class="text-2xl font-semibold text-emerald-600 mb-4 text-center">Normal Person Registration</h3>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label for="normal-name" class="block text-gray-700 font-medium mb-1">Full Name</label>
+                                    <input type="text" id="normal-name" class="w-full p-3 border rounded-lg " placeholder="Your Name" required>
+                                </div>
+                                <div>
+                                    <label for="normal-email" class="block text-gray-700 font-medium mb-1">Email</label>
+                                    <input type="email" id="normal-email" class="w-full p-3 border rounded-lg " placeholder="Your Email" required>
+                                </div>
+                                <div>
+                                    <label for="normal-phone" class="block text-gray-700 font-medium mb-1">Phone Number</label>
+                                    <input type="tel" id="normal-phone" class="w-full p-3 border rounded-lg " placeholder="Your Phone Number" required>
+                                </div>
+                                <div>
+                                    <label for="normal-password" class="block text-gray-700 font-medium mb-1">Password</label>
+                                    <input type="password" id="normal-password" class="w-full p-3 border rounded-lg " placeholder="Your Password" required>
+                                </div>
+                            </div>
+                            <button class="mt-4 bg-lime-400 text-emerald-900 px-8 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full" onclick="validateForm('normal')">Register</button>
+                            <p class="mt-3 text-center text-gray-600">Already have an account? <a href="#" class="text-lime-500 hover:underline" onclick="event.preventDefault(); flipToLogin()">Log in here</a>.</p>
+                        </div>
+                    </div>
+                    <!-- Login Form (Back) -->
+                    <div class="card-face back bg-white p-6 rounded-3xl shadow-2xl border-2 border-lime-200 absolute top-0 left-0 w-full h-full flex flex-col justify-center">
+                        <div class="text-center mb-6">
+                            <h3 class="text-2xl font-semibold text-emerald-600 mb-4">Login to Your Account</h3>
+                            <p class="text-gray-600 text-lg">Welcome back! Sign in to continue your journey with CrowdFarm.</p>
+                        </div>
+                        <div class="grid grid-cols-1 gap-6 max-w-md mx-auto">
+                            <div>
+                                <label for="login-email" class="block text-gray-700 font-medium mb-1">Email</label>
+                                <input type="email" id="login-email" class="w-full p-3 border rounded-lg " placeholder="Your Email" required>
+                            </div>
+                            <div>
+                                <label for="login-password" class="block text-gray-700 font-medium mb-1">Password</label>
+                                <input type="password" id="login-password" class="w-full p-3 border rounded-lg" placeholder="Your Password" required>
+                            </div>
+                        </div>
+                        <button class="mt-6 bg-lime-400 text-emerald-900 px-8 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105 w-full max-w-md mx-auto" onclick="validateLogin()">Login</button>
+                        <p class="mt-3 text-center text-gray-600">Don't have an account? <a href="#" class="text-lime-500 hover:underline" onclick="event.preventDefault(); flipToRegister()">Register here</a>.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gradient-to-r from-emerald-700 to-lime-600 text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="flex flex-col items-center">
+                    <div class="flex items-center space-x-3 mb-4">
+                        <img src="Artboard 1.png" alt="CrowdFarm Logo" class="h-12 w-12 rounded-full object-cover">
+                        <h3 class="text-xl font-bold">Harvest Together</h3>
+                    </div>
+                    <p class="text-sm leading-relaxed text-center">Join our mission to make farming sustainable and rewarding. Support farmers, share harvests, and grow a greener future.</p>
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
+                    <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-center">
+                        <a href="#home" class="hover:text-lime-300 transition-colors duration-300">Home</a>
+                        <a href="#projects" class="hover:text-lime-300 transition-colors duration-300">Projects</a>
+                        <a href="#about" class="hover:text-lime-300 transition-colors duration-300">About</a>
+                        <a href="#contact" class="hover:text-lime-300 transition-colors duration-300">Contact</a>
+                    </div>
+                </div>
+                <div class="flex flex-col items-center">
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-sm text-center">
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-envelope mr-2 text-lime-300"></i>
+                            <a href="mailto:faridfatullayefh@gmail.com" class="hover:text-lime-300 transition-colors">faridfatullayefh@gmail.com</a>
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-phone mr-2 text-lime-300"></i>
+                            <span>+994 50 732 87 99</span>
+                        </li>
+                        <li class="flex items-center justify-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-lime-300"></i>
+                            <span>Khankendi, Azerbaijan</span>
+                        </li>
+                        <li class="flex justify-center space-x-6 mt-4">
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-linkedin"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 text-center text-sm border-t border-lime-300 pt-6">
+                <p>© 2025 Harvest Together. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Tabs, Card Flip, and Validation -->
+    <script>
+        function showTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById(tabId).classList.remove('hidden');
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`[onclick="showTab('${tabId}')"]`).classList.add('active');
+        }
+
+        function flipToLogin() {
+            const card = document.getElementById('card');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                card.classList.add('flipped');
+            }, 200); // Shortened delay for smoother transition
+        }
+
+        function flipToRegister() {
+            const card = document.getElementById('card');
+            card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            setTimeout(() => {
+                card.classList.remove('flipped');
+            }, 200); // Shortened delay for smoother transition
+        }
+
+        function validateForm(type) {
+            let email, password, name, phone;
+            if (type === 'farmer') {
+                email = document.getElementById('farmer-email').value;
+                password = document.getElementById('farmer-password').value;
+                name = document.getElementById('farmer-name').value;
+                phone = document.getElementById('farmer-phone').value;
+                const fin = document.getElementById('farm-name').value;
+                const farmAddress = document.getElementById('farm-address').value;
+                const farmType = document.getElementById('farm-type').value;
+                if (!name || !phone || !fin || !farmAddress || !farmType) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+            } else if (type === 'investor') {
+                email = document.getElementById('investor-email').value;
+                password = document.getElementById('investor-password').value;
+                name = document.getElementById('investor-name').value;
+                phone = document.getElementById('investor-phone').value;
+                const fin = document.getElementById('budget').value;
+                const interest = document.getElementById('interest').value;
+                if (!name || !phone || !fin || !interest) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+            } else {
+                email = document.getElementById('normal-email').value;
+                password = document.getElementById('normal-password').value;
+                name = document.getElementById('normal-name').value;
+                phone = document.getElementById('normal-phone').value;
+                if (!name || !phone) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+            }
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            alert(`Registration successful for ${type}! Flipping to login...`);
+            flipToLogin();
+        }
+
+        function validateLogin() {
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                return;
+            }
+            if (password.length < 6) {
+                alert('Password must be at least 6 characters long.');
+                return;
+            }
+
+            alert('Login successful! Redirecting to homepage...');
+            window.location.href = 'index.html';
+        }
+    </script>
+
+    <!-- Custom CSS for Card Flip and Tabs -->
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 1s ease-out;
+        }
+        .tab-btn.active {
+            background-color: #bef264;
+            border-color: #bef264;
+            color: #065f46;
+        }
+        .perspective-1000 {
+            perspective: 1000px;
+        }
+        .transform-style-preserve-3d {
+            transform-style: preserve-3d;
+        }
+        .card-face {
+            backface-visibility: hidden;
+        }
+        .front {
+            transform: rotateY(0deg);
+        }
+        .back {
+            transform: rotateY(180deg);
+        }
+        #card.flipped {
+            transform: rotateY(180deg);
+        }
+        #card {
+            transition: transform 0.7s ease;
+            min-height: 650px;
+        }
+        .card-face {
+            height: 100%;
+        }
+    </style>
+</body>
+</html>
