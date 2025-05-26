@@ -9,7 +9,6 @@
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
 <body class="font-inter bg-teal-50 overflow-x-hidden">
-    <!-- Navbar -->
     <header class="bg-emerald-600 text-white sticky top-0 z-50 shadow-xl">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
@@ -34,7 +33,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="relative bg-cover bg-center h-64 flex items-center justify-center" style="background-image: url('farm3.avif')">
         <div class="absolute inset-0 bg-emerald-800/60"></div>
         <div class="container mx-auto px-4 text-center text-white relative z-10">
@@ -49,16 +47,13 @@
         </div>
     </section>
 
-    <!-- Announcements Section -->
     <section id="announcements" class="py-16">
         <div class="container mx-auto px-4">
             <h2 class="text-2xl font-semibold text-emerald-800 text-center mb-6">Announcements</h2>
-            <!-- Tabs -->
             <div class="flex justify-center mb-6">
                 <button class="tab-btn px-4 py-2 text-sm font-medium text-emerald-800 bg-white border border-lime-200 rounded-l-lg hover:bg-lime-50 active" onclick="showTab('my-announcements')" aria-label="My Announcements">My Announcements</button>
                 <button class="tab-btn px-4 py-2 text-sm font-medium text-emerald-800 bg-white border border-lime-200 rounded-r-lg hover:bg-lime-50" onclick="showTab('other-announcements')" aria-label="Other Farmers">Other Farmers</button>
             </div>
-            <!-- Filter Bar -->
             <div class="max-w-lg mx-auto mb-6 flex flex-wrap gap-3 justify-center">
                 <select id="category-filter" class="p-2 border border-teal-100 rounded-lg bg-white text-sm" onchange="filterAnnouncements()" aria-label="Filter by category">
                     <option value="all">All Categories</option>
@@ -78,51 +73,17 @@
                     <option value="fully-funded">Fully Funded</option>
                 </select>
             </div>
-            <!-- Announcement Lists -->
             <div id="my-announcements" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- My Announcements -->
             </div>
             <div id="other-announcements" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Other Farmers' Announcements -->
             </div>
         </div>
     </section>
 
-    <!-- Optional Local Farms Section (Uncomment to Use) -->
-    <!--
-    <section class="py-16 bg-teal-50">
-        <div class="container mx-auto px-4">
-            <h2 class="text-2xl font-semibold text-emerald-800 text-center mb-6">Local Farms</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
-                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
-                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Sunny Orchard</h3>
-                    <p class="text-gray-600 text-sm mb-2">Baku, Azerbaijan</p>
-                    <p class="text-gray-600 text-sm line-clamp-2">Specializing in organic apples and pears, grown sustainably.</p>
-                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
-                </div>
-                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
-                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Green Hills</h3>
-                    <p class="text-gray-600 text-sm mb-2">Ganja, Azerbaijan</p>
-                    <p class="text-gray-600 text-sm line-clamp-2">Producing fresh vegetables and herbs with eco-friendly methods.</p>
-                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
-                </div>
-                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
-                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Valley Dairy</h3>
-                    <p class="text-gray-600 text-sm mb-2">Shamakhi, Azerbaijan</p>
-                    <p class="text-gray-600 text-sm line-clamp-2">Free-range dairy products from local cows.</p>
-                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
-    <!-- Floating Action Button -->
     <button class="fixed bottom-6 right-6 bg-lime-200 text-emerald-800 p-3 rounded-lg shadow-md hover:bg-lime-100 transition-colors duration-200 z-50" onclick="openModal('createAnnouncementModal')" aria-label="Create new announcement">
         <i class="fas fa-plus text-base"></i>
     </button>
 
-    <!-- Profile Modal -->
     <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
         <div class="bg-white p-4 rounded-lg max-w-[360px] w-11/12 sm:w-full transition-all duration-300 modal-content">
             <h3 class="text-lg font-semibold text-emerald-800 mb-3 text-center">Your Profile</h3>
@@ -136,7 +97,7 @@
             <div class="space-y-1 text-gray-700 text-sm">
                 <p><strong>Email:</strong> faridfatullayefh@gmail.com</p>
                 <p><strong>Phone:</strong> +994 50 732 87 99</p>
-                <p><strong>Farm:</strong> Green Valley Farm</p>
+                <p><strong>Farmer ID:</strong> 346</p>
                 <p><strong>Address:</strong> Khankendi, Azerbaijan</p>
                 <p><strong>FIN:</strong> ABC123456</p>
             </div>
@@ -144,7 +105,6 @@
                 <button class="bg-lime-200 text-emerald-800 px-3 py-1.5 rounded-lg hover:bg-lime-100 transition-colors duration-200 text-sm" onclick="openEditProfileForm()">Edit Profile</button>
                 <button class="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-300 transition-colors duration-200 text-sm" onclick="closeModal('profileModal')">Close</button>
             </div>
-            <!-- Edit Profile Form -->
             <div id="editProfileForm" class="hidden mt-3">
                 <div class="grid grid-cols-1 gap-2">
                     <div>
@@ -180,7 +140,6 @@
         </div>
     </div>
 
-    <!-- Create Announcement Modal -->
     <div id="createAnnouncementModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg max-w-md w-full transition-all duration-300 modal-content">
             <h3 class="text-xl font-semibold text-emerald-800 mb-4 text-center">Create Announcement</h3>
@@ -218,7 +177,6 @@
         </div>
     </div>
 
-    <!-- Announcement Detail Modal -->
     <div id="announcementDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
         <div class="bg-white p-6 rounded-lg max-w-md w-full transition-all duration-300 modal-content">
             <h3 class="text-xl font-semibold text-emerald-800 mb-4 text-center" id="detail-title"></h3>
@@ -251,7 +209,6 @@
                     </tbody>
                 </table>
             </div>
-            <!-- Investment Management Section -->
             <div id="investment-management" class="hidden mt-4 bg-teal-50 p-4 rounded-lg shadow-inner transition-all duration-300">
                 <h4 class="text-base font-semibold text-emerald-800 mb-3">Manage Investments</h4>
                 <div class="overflow-x-auto">
@@ -265,7 +222,6 @@
                             </tr>
                         </thead>
                         <tbody id="investment-list">
-                            <!-- Populated by JavaScript -->
                         </tbody>
                     </table>
                 </div>
@@ -279,7 +235,6 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-gradient-to-r from-emerald-700 to-lime-600 text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -329,9 +284,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript -->
     <script>
-        // Mock announcement data
         let announcements = [
             {
                 id: 1,
@@ -392,17 +345,14 @@
             }
         ];
 
-        // Current farmer
         const currentFarmer = { id: 1, name: "Farid Fatullayev" };
 
-        // Calculate interest rates
         function calculateInterestRates(investment) {
             if (investment < 500) return { investor: 10, regular: 5 };
             if (investment < 1000) return { investor: 12, regular: 6 };
             return { investor: 15, regular: 8 };
         }
 
-        // Open modal
         function openModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.classList.remove('hidden');
@@ -410,7 +360,6 @@
             modal.querySelector('.modal-content').classList.add('opacity-100', 'translate-y-0');
         }
 
-        // Close modal
         function closeModal(modalId) {
             const modal = document.getElementById(modalId);
             modal.querySelector('.modal-content').classList.remove('opacity-100', 'translate-y-0');
@@ -418,7 +367,6 @@
             setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
-        // Edit profile form
         function openEditProfileForm() {
             document.getElementById('editProfileForm').classList.remove('hidden');
         }
@@ -427,7 +375,6 @@
             document.getElementById('editProfileForm').classList.add('hidden');
         }
 
-        // Save profile
         function saveProfile() {
             const name = document.getElementById('profile-name').value;
             const email = document.getElementById('profile-email').value;
@@ -451,7 +398,6 @@
             closeEditProfileForm();
         }
 
-        // Show tab
         function showTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
             document.getElementById(tabId).classList.remove('hidden');
@@ -460,7 +406,6 @@
             filterAnnouncements();
         }
 
-        // Filter announcements
         function filterAnnouncements() {
             const category = document.getElementById('category-filter').value;
             const price = document.getElementById('price-filter').value;
@@ -492,7 +437,6 @@
             renderAnnouncements(filtered, activeTab);
         }
 
-        // Create announcement
         function createAnnouncement() {
             const title = document.getElementById('announcement-title').value;
             const description = document.getElementById('announcement-description').value;
@@ -529,7 +473,6 @@
             document.getElementById('announcement-total-investment').value = '';
         }
 
-        // View announcement details
         function viewAnnouncement(id) {
             const announcement = announcements.find(a => a.id === id);
             if (!announcement) return;
@@ -572,13 +515,11 @@
             openModal('announcementDetailModal');
         }
 
-        // Toggle investment management section
         function toggleInvestmentManagement() {
             const investmentSection = document.getElementById('investment-management');
             investmentSection.classList.toggle('hidden');
         }
 
-        // Render investments
         function renderInvestments(investors) {
             const investmentList = document.getElementById('investment-list');
             investmentList.innerHTML = '';
@@ -607,7 +548,6 @@
             });
         }
 
-        // Approve investment (mock)
         function approveInvestment(investorId) {
             const announcementId = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === announcementId);
@@ -621,7 +561,6 @@
             }
         }
 
-        // Reject investment (mock)
         function rejectInvestment(investorId) {
             const announcementId = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === announcementId);
@@ -632,12 +571,11 @@
                     announcement.currentInvestment -= investor.amount;
                     announcement.investors = announcement.investors.filter(i => i.id !== investorId);
                     alert(`Investment of ${investor.amount} AZN by ${investor.name} rejected!`);
-                    viewAnnouncement(announcementId); // Refresh modal
+                    viewAnnouncement(announcementId); 
                 }
             }
         }
 
-        // Invest now (mock)
         function investNow() {
             const id = parseInt(document.getElementById('invest-now-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === id);
@@ -647,7 +585,6 @@
             }
         }
 
-        // Edit announcement
         function editAnnouncement() {
             const id = parseInt(document.getElementById('edit-announcement-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === id);
@@ -689,7 +626,6 @@
             };
         }
 
-        // Render announcements
         function renderAnnouncements(filtered, tabId) {
             const list = document.getElementById(tabId);
             list.innerHTML = '<div class="bg-gray-100 h-40 rounded-lg"></div>'.repeat(3);
@@ -725,11 +661,9 @@
             }, 300);
         }
 
-        // Initial setup
         showTab('my-announcements');
     </script>
 
-    <!-- Custom CSS -->
     <style>
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         .modal-content { transition: opacity 0.3s ease, transform 0.3s ease; transform: translateY(4px); opacity: 0; }
