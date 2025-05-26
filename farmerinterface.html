@@ -3,205 +3,203 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Interface - CrowdFarm</title>
+    <title>Farmer Interface - Harvest Together</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 </head>
-<body class="font-inter bg-gradient-to-br from-emerald-100 via-teal-50 to-lime-100 overflow-x-hidden">
-    <!-- Particle Background -->
-    <div id="particles" class="fixed inset-0 pointer-events-none z-0"></div>
-
+<body class="font-inter bg-teal-50 overflow-x-hidden">
     <!-- Navbar -->
-    <header class="bg-emerald-900/95 backdrop-blur-md text-white sticky top-0 z-50 shadow-lg">
+    <header class="bg-emerald-600 text-white sticky top-0 z-50 shadow-xl">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="farm.jpeg" alt="CrowdFarm Logo" class="h-12 w-12 rounded-full object-cover border-2 border-lime-200 shadow-sm">
-                <h1 class="text-2xl font-bold font-poppins tracking-tight">CrowdFarm</h1>
+                <img src="Artboard 1.png" alt="Harvest Together Logo" class="h-12 w-12 rounded-full object-cover">
+                <h1 class="text-3xl font-bold tracking-tight">Harvest Together</h1>
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="index.html#home" class="relative text-base font-medium hover:text-lime-200 transition-colors duration-300 group">
-                    <span>Home</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-lime-200 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#announcements" class="relative text-base font-medium hover:text-lime-200 transition-colors duration-300 group">
-                    <span>Announcements</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-lime-200 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="#" class="relative text-base font-medium hover:text-lime-200 transition-colors duration-300 group" onclick="event.preventDefault(); openModal('profileModal')">
-                    <span>Profile</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-lime-200 transition-all duration-300 group-hover:w-full"></span>
-                </a>
-                <a href="index.html" class="relative text-base font-medium hover:text-lime-200 transition-colors duration-300 group">
-                    <span>Logout</span>
-                    <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-lime-200 transition-all duration-300 group-hover:w-full"></span>
-                </a>
+            <nav class="hidden md:flex space-x-10">
+                <a href="index.html#home" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Home</a>
+                <a href="#announcements" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Announcements</a>
+                <a href="#" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full" onclick="event.preventDefault(); openModal('profileModal')">Profile</a>
+                <a href="index.html" class="relative text-lg font-medium hover:text-lime-300 transition-colors duration-300 after:content-[''] after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-lime-300 after:transition-all after:duration-300 hover:after:w-full">Logout</a>
             </nav>
-            <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
-                <i class="fas fa-bars text-2xl text-lime-200"></i>
+            <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" aria-label="Toggle mobile menu">
+                <i class="fas fa-bars text-2xl text-lime-300"></i>
             </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-emerald-900/95 backdrop-blur-md text-white px-4 py-6">
-            <a href="index.html#home" class="block py-2 text-base hover:text-lime-200">Home</a>
-            <a href="#announcements" class="block py-2 text-base hover:text-lime-200">Announcements</a>
-            <a href="#" class="block py-2 text-base hover:text-lime-200" onclick="event.preventDefault(); openModal('profileModal')">Profile</a>
-            <a href="index.html" class="block py-2 text-base hover:text-lime-200">Logout</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-emerald-600 text-white px-4 py-6">
+            <a href="index.html#home" class="block py-2 text-lg hover:text-lime-300">Home</a>
+            <a href="#announcements" class="block py-2 text-lg hover:text-lime-300">Announcements</a>
+            <a href="#" class="block py-2 text-lg hover:text-lime-300" onclick="event.preventDefault(); openModal('profileModal')">Profile</a>
+            <a href="index.html" class="block py-2 text-lg hover:text-lime-300">Logout</a>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-cover bg-center h-80 flex items-center justify-center" style="background-image: url('farmers.avif')">
-        <div class="absolute inset-0 bg-gradient-to-b from-emerald-900/70 to-teal-600/50"></div>
+    <section class="relative bg-cover bg-center h-64 flex items-center justify-center" style="background-image: url('farm3.avif')">
+        <div class="absolute inset-0 bg-emerald-800/60"></div>
         <div class="container mx-auto px-4 text-center text-white relative z-10">
-            <h2 class="text-4xl md:text-5xl font-bold font-poppins mb-4 animate-fade-in">Welcome, Farmer!</h2>
-            <p class="text-lg md:text-xl max-w-2xl mx-auto">Crowdfund your harvest and explore investment opportunities.</p>
-            <div class="mt-6 bg-white/20 backdrop-blur-md p-4 rounded-xl inline-flex items-center space-x-3">
-                <i class="fas fa-cloud-sun text-2xl text-lime-200"></i>
+            <h2 class="text-3xl font-semibold">Welcome, Farmer!</h2>
+            <p class="text-base mt-2 max-w-xl mx-auto">Crowdfund your harvest and connect with investors.</p>
+            <div class="mt-4 p-3 bg-white/20 rounded-lg inline-flex items-center space-x-2">
+                <i class="fas fa-cloud-sun text-lg text-lime-200"></i>
                 <div>
-                    <p class="text-sm font-medium">Khankendi: 18°C, Partly Cloudy</p>
-                    <p class="text-xs">Ideal for planting!</p>
+                    <p class="text-xs font-medium">Khankendi: 18°C, Partly Cloudy</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Announcements Section -->
-    <section id="announcements" class="py-20 relative">
+    <section id="announcements" class="py-16">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold font-poppins text-center mb-8 text-emerald-900">Announcements</h2>
+            <h2 class="text-2xl font-semibold text-emerald-800 text-center mb-6">Announcements</h2>
             <!-- Tabs -->
-            <div class="flex justify-center mb-8">
-                <button class="tab-btn px-6 py-3 text-base font-medium text-emerald-800 bg-white/90 backdrop-blur-md border-2 border-lime-200 rounded-l-lg hover:bg-lime-100 transition-all duration-300 active" onclick="showTab('my-announcements')">My Announcements</button>
-                <button class="tab-btn px-6 py-3 text-base font-medium text-emerald-800 bg-white/90 backdrop-blur-md border-2 border-lime-200 rounded-r-lg hover:bg-lime-100 transition-all duration-300" onclick="showTab('other-announcements')">Other Farmers</button>
+            <div class="flex justify-center mb-6">
+                <button class="tab-btn px-4 py-2 text-sm font-medium text-emerald-800 bg-white border border-lime-200 rounded-l-lg hover:bg-lime-50 active" onclick="showTab('my-announcements')" aria-label="My Announcements">My Announcements</button>
+                <button class="tab-btn px-4 py-2 text-sm font-medium text-emerald-800 bg-white border border-lime-200 rounded-r-lg hover:bg-lime-50" onclick="showTab('other-announcements')" aria-label="Other Farmers">Other Farmers</button>
             </div>
             <!-- Filter Bar -->
-            <div class="max-w-2xl mx-auto mb-8 flex flex-wrap gap-4 justify-center">
-                <select id="category-filter" class="p-2 border rounded-lg bg-white/90 backdrop-blur-md focus:ring-2 focus:ring-lime-200 text-sm" onchange="filterAnnouncements()">
+            <div class="max-w-lg mx-auto mb-6 flex flex-wrap gap-3 justify-center">
+                <select id="category-filter" class="p-2 border border-teal-100 rounded-lg bg-white text-sm" onchange="filterAnnouncements()" aria-label="Filter by category">
                     <option value="all">All Categories</option>
                     <option value="produce">Produce</option>
                     <option value="livestock">Livestock</option>
                     <option value="services">Farm Services</option>
                 </select>
-                <select id="price-filter" class="p-2 border rounded-lg bg-white/90 backdrop-blur-md focus:ring-2 focus:ring-lime-200 text-sm" onchange="filterAnnouncements()">
+                <select id="price-filter" class="p-2 border border-teal-100 rounded-lg bg-white text-sm" onchange="filterAnnouncements()" aria-label="Filter by price">
                     <option value="all">All Prices</option>
                     <option value="low">0-5 AZN</option>
                     <option value="mid">5-10 AZN</option>
                     <option value="high">10+ AZN</option>
                 </select>
-                <select id="investment-filter" class="p-2 border rounded-lg bg-white/90 backdrop-blur-md focus:ring-2 focus:ring-lime-200 text-sm" onchange="filterAnnouncements()">
+                <select id="investment-filter" class="p-2 border border-teal-100 rounded-lg bg-white text-sm" onchange="filterAnnouncements()" aria-label="Filter by investment status">
                     <option value="all">All Investments</option>
                     <option value="needs-funding">Needs Funding</option>
                     <option value="fully-funded">Fully Funded</option>
                 </select>
             </div>
             <!-- Announcement Lists -->
-            <div id="my-announcements" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="my-announcements" class="tab-content grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- My Announcements -->
             </div>
-            <div id="other-announcements" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div id="other-announcements" class="tab-content hidden grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <!-- Other Farmers' Announcements -->
             </div>
         </div>
     </section>
 
-    <!-- Map Section -->
-    <section class="py-20 bg-emerald-50/50">
+    <!-- Optional Local Farms Section (Uncomment to Use) -->
+    <!--
+    <section class="py-16 bg-teal-50">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold font-poppins text-center mb-8 text-emerald-900">Fund Farms Near You</h2>
-            <div class="max-w-4xl mx-auto bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-lime-200">
-                <img src="map-placeholder.jpg" alt="Farm Map" class="w-full h-64 object-cover rounded-lg">
-                <p class="text-center text-gray-600 mt-4">Interactive map coming soon! Invest in local farms.</p>
+            <h2 class="text-2xl font-semibold text-emerald-800 text-center mb-6">Local Farms</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-4xl mx-auto">
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
+                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Sunny Orchard</h3>
+                    <p class="text-gray-600 text-sm mb-2">Baku, Azerbaijan</p>
+                    <p class="text-gray-600 text-sm line-clamp-2">Specializing in organic apples and pears, grown sustainably.</p>
+                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
+                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Green Hills</h3>
+                    <p class="text-gray-600 text-sm mb-2">Ganja, Azerbaijan</p>
+                    <p class="text-gray-600 text-sm line-clamp-2">Producing fresh vegetables and herbs with eco-friendly methods.</p>
+                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
+                </div>
+                <div class="bg-white p-4 rounded-lg border border-teal-100 shadow-sm">
+                    <h3 class="text-base font-semibold text-emerald-800 mb-2">Valley Dairy</h3>
+                    <p class="text-gray-600 text-sm mb-2">Shamakhi, Azerbaijan</p>
+                    <p class="text-gray-600 text-sm line-clamp-2">Free-range dairy products from local cows.</p>
+                    <button class="mt-3 bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 w-full text-sm">View Farm</button>
+                </div>
             </div>
         </div>
     </section>
+    -->
 
     <!-- Floating Action Button -->
-    <button class="fixed bottom-8 right-8 bg-lime-200 text-emerald-900 p-4 rounded-full shadow-xl hover:bg-lime-100 transition-all duration-300 transform hover:scale-110 z-50" onclick="openModal('createAnnouncementModal')">
-        <i class="fas fa-plus text-xl"></i>
+    <button class="fixed bottom-6 right-6 bg-lime-200 text-emerald-800 p-3 rounded-lg shadow-md hover:bg-lime-100 transition-colors duration-200 z-50" onclick="openModal('createAnnouncementModal')" aria-label="Create new announcement">
+        <i class="fas fa-plus text-base"></i>
     </button>
 
     <!-- Profile Modal -->
-    <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-        <div class="bg-white/95 backdrop-blur-lg p-8 rounded-3xl max-w-lg w-full transform transition-all duration-300 scale-95 modal-content border border-lime-200/50">
-            <h3 class="text-2xl font-bold font-poppins text-emerald-900 mb-6 text-center">Your Profile</h3>
-            <div class="flex items-center space-x-4 mb-6">
-                <div class="relative">
-                    <img src="farmer-placeholder.jpg" alt="Farmer Avatar" class="h-16 w-16 rounded-full object-cover border-2 border-lime-200 shadow-sm">
-                    <div class="absolute inset-0 rounded-full border-2 border-lime-200 animate-spin-slow opacity-50"></div>
-                </div>
+    <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-4 rounded-lg max-w-[360px] w-11/12 sm:w-full transition-all duration-300 modal-content">
+            <h3 class="text-lg font-semibold text-emerald-800 mb-3 text-center">Your Profile</h3>
+            <div class="flex items-center space-x-2 mb-3">
+                <img src="farmer-placeholder.jpg" alt="Farmer Avatar" class="h-10 w-10 rounded-full object-cover border border-lime-200">
                 <div>
-                    <h4 class="text-xl font-semibold text-emerald-800">Farid Fatullayev</h4>
-                    <p class="text-gray-600 text-sm">Organic Farmer</p>
+                    <h4 class="text-sm font-semibold text-emerald-800">Farid Fatullayev</h4>
+                    <p class="text-gray-600 text-xs">Organic Farmer</p>
                 </div>
             </div>
-            <div class="space-y-3 text-gray-700 text-sm">
+            <div class="space-y-1 text-gray-700 text-sm">
                 <p><strong>Email:</strong> faridfatullayefh@gmail.com</p>
                 <p><strong>Phone:</strong> +994 50 732 87 99</p>
                 <p><strong>Farm:</strong> Green Valley Farm</p>
                 <p><strong>Address:</strong> Khankendi, Azerbaijan</p>
                 <p><strong>FIN:</strong> ABC123456</p>
             </div>
-            <div class="flex justify-end mt-6 space-x-4">
-                <button class="bg-lime-200 text-emerald-900 px-6 py-2 rounded-full hover:bg-lime-100 transition-all duration-300" onclick="openEditProfileForm()">Edit Profile</button>
-                <button class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-400 transition-all duration-300" onclick="closeModal('profileModal')">Close</button>
+            <div class="flex justify-end mt-3 space-x-2">
+                <button class="bg-lime-200 text-emerald-800 px-3 py-1.5 rounded-lg hover:bg-lime-100 transition-colors duration-200 text-sm" onclick="openEditProfileForm()">Edit Profile</button>
+                <button class="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-300 transition-colors duration-200 text-sm" onclick="closeModal('profileModal')">Close</button>
             </div>
             <!-- Edit Profile Form -->
-            <div id="editProfileForm" class="hidden mt-6">
-                <div class="grid grid-cols-1 gap-4">
+            <div id="editProfileForm" class="hidden mt-3">
+                <div class="grid grid-cols-1 gap-2">
                     <div>
-                        <label for="profile-name" class="block text-gray-700 font-medium text-sm mb-1">Full Name</label>
-                        <input type="text" id="profile-name" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="Farid Fatullayev" required>
+                        <label for="profile-name" class="block text-gray-700 text-xs mb-1">Full Name</label>
+                        <input type="text" id="profile-name" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="Farid Fatullayev" required>
                     </div>
                     <div>
-                        <label for="profile-email" class="block text-gray-700 font-medium text-sm mb-1">Email</label>
-                        <input type="email" id="profile-email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="faridfatullayefh@gmail.com" required>
+                        <label for="profile-email" class="block text-gray-700 text-xs mb-1">Email</label>
+                        <input type="email" id="profile-email" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="faridfatullayefh@gmail.com" required>
                     </div>
                     <div>
-                        <label for="profile-phone" class="block text-gray-700 font-medium text-sm mb-1">Phone Number</label>
-                        <input type="tel" id="profile-phone" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="+994 50 732 87 99" required>
+                        <label for="profile-phone" class="block text-gray-700 text-xs mb-1">Phone Number</label>
+                        <input type="tel" id="profile-phone" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="+994 50 732 87 99" required>
                     </div>
                     <div>
-                        <label for="profile-farm" class="block text-gray-700 font-medium text-sm mb-1">Farm Name</label>
-                        <input type="text" id="profile-farm" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="Green Valley Farm" required>
+                        <label for="profile-farm" class="block text-gray-700 text-xs mb-1">Farm Name</label>
+                        <input type="text" id="profile-farm" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="Green Valley Farm" required>
                     </div>
                     <div>
-                        <label for="profile-address" class="block text-gray-700 font-medium text-sm mb-1">Farm Address</label>
-                        <input type="text" id="profile-address" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="Khankendi, Azerbaijan" required>
+                        <label for="profile-address" class="block text-gray-700 text-xs mb-1">Farm Address</label>
+                        <input type="text" id="profile-address" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="Khankendi, Azerbaijan" required>
                     </div>
                     <div>
-                        <label for="profile-fin" class="block text-gray-700 font-medium text-sm mb-1">FIN</label>
-                        <input type="text" id="profile-fin" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" value="ABC123456" required>
+                        <label for="profile-fin" class="block text-gray-700 text-xs mb-1">FIN</label>
+                        <input type="text" id="profile-fin" class="w-full p-1.5 border border-teal-100 rounded-lg text-sm" value="ABC123456" required>
                     </div>
                 </div>
-                <div class="flex justify-end mt-6 space-x-4">
-                    <button class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-400 transition-all duration-300" onclick="closeEditProfileForm()">Cancel</button>
-                    <button class="bg-lime-200 text-emerald-900 px-6 py-2 rounded-full hover:bg-lime-100 transition-all duration-300" onclick="saveProfile()">Save</button>
+                <div class="flex justify-end mt-3 space-x-2">
+                    <button class="bg-gray-200 text-gray-700 px-3 py-1.5 rounded-lg hover:bg-gray-300 transition-colors duration-200 text-sm" onclick="closeEditProfileForm()">Cancel</button>
+                    <button class="bg-lime-200 text-emerald-800 px-3 py-1.5 rounded-lg hover:bg-lime-100 transition-colors duration-200 text-sm" onclick="saveProfile()">Save</button>
                 </div>
             </div>
         </div>
     </div>
 
     <!-- Create Announcement Modal -->
-    <div id="createAnnouncementModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-        <div class="bg-white/95 backdrop-blur-lg p-8 rounded-3xl max-w-lg w-full transform transition-all duration-300 scale-95 modal-content border border-lime-200/50">
-            <h3 class="text-2xl font-bold font-poppins text-emerald-900 mb-6 text-center">Create Announcement</h3>
-            <div class="grid grid-cols-1 gap-4">
+    <div id="createAnnouncementModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg max-w-md w-full transition-all duration-300 modal-content">
+            <h3 class="text-xl font-semibold text-emerald-800 mb-4 text-center">Create Announcement</h3>
+            <div class="grid grid-cols-1 gap-3">
                 <div>
-                    <label for="announcement-title" class="block text-gray-700 font-medium text-sm mb-1">Title</label>
-                    <input type="text" id="announcement-title" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" placeholder="e.g., Fresh Organic Tomatoes" required>
+                    <label for="announcement-title" class="block text-gray-700 text-sm mb-1">Title</label>
+                    <input type="text" id="announcement-title" class="w-full p-2 border border-teal-100 rounded-lg text-sm" placeholder="e.g., Fresh Organic Tomatoes" required>
                 </div>
                 <div>
-                    <label for="announcement-description" class="block text-gray-700 font-medium text-sm mb-1">Description</label>
-                    <textarea id="announcement-description" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" rows="4" placeholder="Describe your product or service" required></textarea>
+                    <label for="announcement-description" class="block text-gray-700 text-sm mb-1">Description</label>
+                    <textarea id="announcement-description" class="w-full p-2 border border-teal-100 rounded-lg text-sm" rows="3" placeholder="Describe your product or service" required></textarea>
                 </div>
                 <div>
-                    <label for="announcement-price" class="block text-gray-700 font-medium text-sm mb-1">Price (AZN)</label>
-                    <input type="number" id="announcement-price" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" placeholder="e.g., 5.00" step="0.01" required>
+                    <label for="announcement-price" class="block text-gray-700 text-sm mb-1">Price (AZN)</label>
+                    <input type="number" id="announcement-price" class="w-full p-2 border border-teal-100 rounded-lg text-sm" placeholder="e.g., 5.00" step="0.01" required>
                 </div>
                 <div>
-                    <label for="announcement-category" class="block text-gray-700 font-medium text-sm mb-1">Category</label>
-                    <select id="announcement-category" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" required>
+                    <label for="announcement-category" class="block text-gray-700 text-sm mb-1">Category</label>
+                    <select id="announcement-category" class="w-full p-2 border border-teal-100 rounded-lg text-sm" required>
                         <option value="">Select Category</option>
                         <option value="produce">Produce</option>
                         <option value="livestock">Livestock</option>
@@ -209,34 +207,34 @@
                     </select>
                 </div>
                 <div>
-                    <label for="announcement-total-investment" class="block text-gray-700 font-medium text-sm mb-1">Total Investment Required (AZN)</label>
-                    <input type="number" id="announcement-total-investment" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-lime-200" placeholder="e.g., 1000" required>
+                    <label for="announcement-total-investment" class="block text-gray-700 text-sm mb-1">Total Investment Required (AZN)</label>
+                    <input type="number" id="announcement-total-investment" class="w-full p-2 border border-teal-100 rounded-lg text-sm" placeholder="e.g., 1000" required>
                 </div>
             </div>
-            <div class="flex justify-end mt-6 space-x-4">
-                <button class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-400 transition-all duration-300" onclick="closeModal('createAnnouncementModal')">Cancel</button>
-                <button class="bg-lime-200 text-emerald-900 px-6 py-2 rounded-full hover:bg-lime-100 transition-all duration-300" onclick="createAnnouncement()">Post</button>
+            <div class="flex justify-end mt-4 space-x-3">
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors duration-200" onclick="closeModal('createAnnouncementModal')">Cancel</button>
+                <button class="bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200" onclick="createAnnouncement()">Post</button>
             </div>
         </div>
     </div>
 
     <!-- Announcement Detail Modal -->
-    <div id="announcementDetailModal" class="fixed inset-0 bg-black bg-opacity-60 hidden flex items-center justify-center z-50">
-        <div class="bg-white/95 backdrop-blur-lg p-8 rounded-3xl max-w-lg w-full transform transition-all duration-300 scale-95 modal-content border border-lime-200/50">
-            <h3 class="text-2xl font-bold font-poppins text-emerald-900 mb-6 text-center" id="detail-title"></h3>
-            <p class="text-gray-600 mb-4 text-sm" id="detail-description"></p>
-            <p class="text-gray-600 mb-4 text-sm"><strong>Price:</strong> <span id="detail-price"></span> AZN</p>
-            <p class="text-gray-600 mb-4 text-sm"><strong>Category:</strong> <span id="detail-category"></span></p>
-            <p class="text-gray-600 mb-4 text-sm hidden" id="detail-farmer"><strong>Farmer:</strong> <span id="detail-farmer-name"></span></p>
-            <div class="mb-4">
+    <div id="announcementDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center z-50">
+        <div class="bg-white p-6 rounded-lg max-w-md w-full transition-all duration-300 modal-content">
+            <h3 class="text-xl font-semibold text-emerald-800 mb-4 text-center" id="detail-title"></h3>
+            <p class="text-gray-600 mb-3 text-sm" id="detail-description"></p>
+            <p class="text-gray-600 mb-3 text-sm"><strong>Price:</strong> <span id="detail-price"></span> AZN</p>
+            <p class="text-gray-600 mb-3 text-sm"><strong>Category:</strong> <span id="detail-category"></span></p>
+            <p class="text-gray-600 mb-3 text-sm hidden" id="detail-farmer"><strong>Farmer:</strong> <span id="detail-farmer-name"></span></p>
+            <div class="mb-3">
                 <p class="text-gray-600 mb-2 text-sm"><strong>Total Investment Required:</strong> <span id="detail-total-investment"></span> AZN</p>
                 <p class="text-gray-600 mb-2 text-sm"><strong>Current Investment:</strong> <span id="detail-current-investment"></span> AZN</p>
                 <p class="text-gray-600 mb-2 text-sm"><strong>Remaining:</strong> <span id="detail-remaining-investment"></span> AZN</p>
-                <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4">
-                    <div id="detail-progress-bar" class="bg-lime-200 h-2.5 rounded-full transition-all duration-500"></div>
+                <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                    <div id="detail-progress-bar" class="bg-lime-200 h-2 rounded-full transition-all duration-300"></div>
                 </div>
             </div>
-            <div class="mb-4">
+            <div class="mb-3">
                 <p class="text-gray-600 mb-2 text-sm font-semibold">Interest Rates:</p>
                 <table class="w-full text-sm text-gray-600 border border-teal-100">
                     <thead class="bg-teal-50">
@@ -247,65 +245,85 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white/50"><td class="p-2">0-500</td><td class="p-2">10%</td><td class="p-2">5%</td></tr>
-                        <tr class="bg-teal-50/30"><td class="p-2">500-1000</td><td class="p-2">12%</td><td class="p-2">6%</td></tr>
-                        <tr class="bg-white/50"><td class="p-2">1000+</td><td class="p-2">15%</td><td class="p-2">8%</td></tr>
+                        <tr><td class="p-2">0-500</td><td class="p-2">10%</td><td class="p-2">5%</td></tr>
+                        <tr class="bg-teal-50"><td class="p-2">500-1000</td><td class="p-2">12%</td><td class="p-2">6%</td></tr>
+                        <tr><td class="p-2">1000+</td><td class="p-2">15%</td><td class="p-2">8%</td></tr>
                     </tbody>
                 </table>
             </div>
-            <div class="flex justify-end mt-6 space-x-4">
-                <button class="bg-gray-300 text-gray-700 px-6 py-2 rounded-full hover:bg-gray-400 transition-all duration-300" onclick="closeModal('announcementDetailModal')">Close</button>
-                <button id="manage-investment-btn" class="bg-lime-200 text-emerald-900 px-6 py-2 rounded-full hover:bg-lime-100 transition-all duration-300 hidden" onclick="manageInvestment()">Manage Investment</button>
-                <button id="invest-now-btn" class="bg-teal-600 text-white px-6 py-2 rounded-full hover:bg-teal-500 transition-all duration-300 hidden" onclick="investNow()">Invest Now</button>
+            <!-- Investment Management Section -->
+            <div id="investment-management" class="hidden mt-4 bg-teal-50 p-4 rounded-lg shadow-inner transition-all duration-300">
+                <h4 class="text-base font-semibold text-emerald-800 mb-3">Manage Investments</h4>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-sm text-gray-600">
+                        <thead class="bg-lime-100">
+                            <tr>
+                                <th class="p-2 text-left">Investor</th>
+                                <th class="p-2 text-left">Amount (AZN)</th>
+                                <th class="p-2 text-left">Status</th>
+                                <th class="p-2 text-left">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="investment-list">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="flex justify-end mt-4 space-x-3">
+                <button class="bg-gray-200 text-gray-700 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors duration-200 transform hover:scale-105" onclick="closeModal('announcementDetailModal')">Close</button>
+                <button id="edit-announcement-btn" class="bg-yellow-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-yellow-100 transition-colors duration-200 transform hover:scale-105 hidden" onclick="editAnnouncement()">Edit Announcement</button>
+                <button id="manage-investment-btn" class="bg-lime-200 text-emerald-800 px-4 py-2 rounded-lg hover:bg-lime-100 transition-colors duration-200 transform hover:scale-105 hidden" onclick="toggleInvestmentManagement()">Manage Investments</button>
+                <button id="invest-now-btn" class="bg-teal-600 text-white px-4 py-2 rounded-lg hover:bg-teal-500 transition-colors duration-200 transform hover:scale-105 hidden" onclick="investNow()">Invest Now</button>
             </div>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-gradient-to-r from-emerald-900 to-teal-800 text-white py-16 relative z-10">
+    <footer class="bg-gradient-to-r from-emerald-700 to-lime-600 text-white py-16">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div class="flex flex-col items-center">
                     <div class="flex items-center space-x-3 mb-4">
-                        <img src="farm.jpeg" alt="CrowdFarm Logo" class="h-12 w-12 rounded-full object-cover border-2 border-lime-200 shadow-sm">
-                        <h3 class="text-xl font-bold font-poppins">Harvest Together</h3>
+                        <img src="Artboard 1.png" alt="CrowdFarm Logo" class="h-12 w-12 rounded-full object-cover">
+                        <h3 class="text-xl font-bold">Harvest Together</h3>
                     </div>
-                    <p class="text-sm leading-relaxed text-center">Join our mission to make farming sustainable and rewarding. Fund farms, share harvests, grow a greener future.</p>
+                    <p class="text-sm leading-relaxed text-center">Join our mission to make farming sustainable and rewarding. Support farmers, share harvests, and grow a greener future.</p>
                 </div>
                 <div class="flex flex-col items-center">
-                    <h3 class="text-xl font-bold font-poppins mb-4">Quick Links</h3>
+                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
                     <div class="grid grid-cols-2 gap-x-8 gap-y-2 text-center">
-                        <a href="#home" class="hover:text-lime-200 transition-colors duration-300">Home</a>
-                        <a href="#announcements" class="hover:text-lime-200 transition-colors duration-300">Announcements</a>
-                        <a href="#" class="hover:text-lime-200 transition-colors duration-300" onclick="event.preventDefault(); openModal('profileModal')">Profile</a>
-                        <a href="index.html" class="hover:text-lime-200 transition-colors duration-300">Logout</a>
+                        <a href="#home" class="hover:text-lime-300 transition-colors duration-300">Home</a>
+                        <a href="#projects" class="hover:text-lime-300 transition-colors duration-300">Projects</a>
+                        <a href="#about" class="hover:text-lime-300 transition-colors duration-300">About</a>
+                        <a href="#contact" class="hover:text-lime-300 transition-colors duration-300">Contact</a>
                     </div>
                 </div>
                 <div class="flex flex-col items-center">
-                    <h3 class="text-xl font-bold font-poppins mb-4">Contact Us</h3>
+                    <h3 class="text-xl font-bold mb-4">Contact Us</h3>
                     <ul class="space-y-2 text-sm text-center">
                         <li class="flex items-center justify-center">
-                            <i class="fas fa-envelope mr-2 text-lime-200"></i>
-                            <a href="mailto:faridfatullayefh@gmail.com" class="hover:text-lime-200 transition-colors">faridfatullayefh@gmail.com</a>
+                            <i class="fas fa-envelope mr-2 text-lime-300"></i>
+                            <a href="mailto:faridfatullayefh@gmail.com" class="hover:text-lime-300 transition-colors">faridfatullayefh@gmail.com</a>
                         </li>
                         <li class="flex items-center justify-center">
-                            <i class="fas fa-phone mr-2 text-lime-200"></i>
+                            <i class="fas fa-phone mr-2 text-lime-300"></i>
                             <span>+994 50 732 87 99</span>
                         </li>
                         <li class="flex items-center justify-center">
-                            <i class="fas fa-map-marker-alt mr-2 text-lime-200"></i>
+                            <i class="fas fa-map-marker-alt mr-2 text-lime-300"></i>
                             <span>Khankendi, Azerbaijan</span>
                         </li>
                         <li class="flex justify-center space-x-6 mt-4">
-                            <a href="#" class="text-2xl hover:text-lime-200 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-2xl hover:text-lime-200 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-2xl hover:text-lime-200 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-2xl hover:text-lime-200 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-3xl hover:text-lime-300 transition-transform duration-300 transform hover:scale-125"><i class="fab fa-linkedin"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 text-center text-sm border-t border-lime-400/50 pt-6">
+            <div class="mt-12 text-center text-sm border-t border-lime-300 pt-6">
                 <p>© 2025 Harvest Together. All rights reserved.</p>
             </div>
         </div>
@@ -324,7 +342,11 @@
                 farmerId: 1,
                 farmerName: "Farid Fatullayev",
                 totalInvestmentRequired: 1000,
-                currentInvestment: 500
+                currentInvestment: 500,
+                investors: [
+                    { id: 1, name: "Aysel Mammadova", amount: 200, status: "Approved" },
+                    { id: 2, name: "Elchin Huseynov", amount: 300, status: "Pending" }
+                ]
             },
             {
                 id: 2,
@@ -335,10 +357,13 @@
                 farmerId: 1,
                 farmerName: "Farid Fatullayev",
                 totalInvestmentRequired: 500,
-                currentInvestment: 400
+                currentInvestment: 400,
+                investors: [
+                    { id: 3, name: "Leyla Aliyeva", amount: 400, status: "Approved" }
+                ]
             },
             {
-                id: 3,
+                id: 2,
                 title: "Organic Apples",
                 description: "Crisp and juicy apples from Sunny Orchard, pesticide-free.",
                 price: 4.00,
@@ -346,7 +371,10 @@
                 farmerId: 2,
                 farmerName: "Aysel Mammadova",
                 totalInvestmentRequired: 800,
-                currentInvestment: 200
+                currentInvestment: 200,
+                investors: [
+                    { id: 4, name: "Farid Fatullayev", amount: 200, status: "Pending" }
+                ]
             },
             {
                 id: 4,
@@ -357,7 +385,10 @@
                 farmerId: 3,
                 farmerName: "Elchin Huseynov",
                 totalInvestmentRequired: 1200,
-                currentInvestment: 600
+                currentInvestment: 600,
+                investors: [
+                    { id: 5, name: "Nargiz Rahimova", amount: 600, status: "Approved" }
+                ]
             }
         ];
 
@@ -366,47 +397,25 @@
 
         // Calculate interest rates
         function calculateInterestRates(investment) {
-            if (investment < 500) {
-                return { investor: 10, regular: 5 };
-            } else if (investment < 1000) {
-                return { investor: 12, regular: 6 };
-            } else {
-                return { investor: 15, regular: 8 };
-            }
-        }
-
-        // Particle background
-        function createParticles() {
-            const particlesDiv = document.getElementById('particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'absolute bg-lime-200/20 rounded-full';
-                particle.style.width = `${Math.random() * 4 + 2}px`;
-                particle.style.height = particle.style.width;
-                particle.style.left = `${Math.random() * 100}vw`;
-                particle.style.top = `${Math.random() * 100}vh`;
-                particle.style.animation = `float ${Math.random() * 10 + 5}s linear infinite`;
-                if (i % 10 === 0) { // Add coin particles
-                    particle.className = 'absolute bg-yellow-300/30 rounded-full w-6 h-6 animate-pulse';
-                }
-                particlesDiv.appendChild(particle);
-            }
+            if (investment < 500) return { investor: 10, regular: 5 };
+            if (investment < 1000) return { investor: 12, regular: 6 };
+            return { investor: 15, regular: 8 };
         }
 
         // Open modal
         function openModal(modalId) {
-            document.getElementById(modalId).classList.remove('hidden');
-            document.getElementById(modalId).querySelector('.modal-content').classList.remove('scale-95');
-            document.getElementById(modalId).querySelector('.modal-content').classList.add('scale-100');
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('hidden');
+            modal.querySelector('.modal-content').classList.remove('opacity-0', 'translate-y-4');
+            modal.querySelector('.modal-content').classList.add('opacity-100', 'translate-y-0');
         }
 
         // Close modal
         function closeModal(modalId) {
-            document.getElementById(modalId).querySelector('.modal-content').classList.remove('scale-100');
-            document.getElementById(modalId).querySelector('.modal-content').classList.add('scale-95');
-            setTimeout(() => {
-                document.getElementById(modalId).classList.add('hidden');
-            }, 300);
+            const modal = document.getElementById(modalId);
+            modal.querySelector('.modal-content').classList.remove('opacity-100', 'translate-y-0');
+            modal.querySelector('.modal-content').classList.add('opacity-0', 'translate-y-4');
+            setTimeout(() => modal.classList.add('hidden'), 300);
         }
 
         // Edit profile form
@@ -463,17 +472,20 @@
                 if (activeTab === 'my-announcements' && !isOwn) return false;
                 if (activeTab === 'other-announcements' && isOwn) return false;
 
-                if (category !== 'all' && a.category.toLowerCase() !== category) return false;
+                if (category !== 'all' && a.category.toLowerCase() !== category.toLowerCase()) return false;
+
                 if (price !== 'all') {
-                    if (price === 'low' && (a.price < 0 || a.price > 5)) return false;
-                    if (price === 'mid' && (a.price < 5 || a.price > 10)) return false;
-                    if (price === 'high' && a.price < 10) return false;
+                    if (price === 'low' && (a.price <= 0 || a.price > 5)) return false;
+                    if (price === 'mid' && (a.price <= 5 || a.price > 10)) return false;
+                    if (price === 'high' && a.price <= 10) return false;
                 }
+
                 if (investment !== 'all') {
                     const progress = (a.currentInvestment / a.totalInvestmentRequired) * 100;
                     if (investment === 'needs-funding' && progress >= 100) return false;
                     if (investment === 'fully-funded' && progress < 100) return false;
                 }
+
                 return true;
             });
 
@@ -502,7 +514,8 @@
                 farmerId: currentFarmer.id,
                 farmerName: currentFarmer.name,
                 totalInvestmentRequired: totalInvestment,
-                currentInvestment: 0
+                currentInvestment: 0,
+                investors: []
             };
 
             announcements.push(newAnnouncement);
@@ -531,44 +544,112 @@
             const progress = (announcement.currentInvestment / announcement.totalInvestmentRequired) * 100;
             document.getElementById('detail-progress-bar').style.width = `${Math.min(progress, 100)}%`;
 
+            const editBtn = document.getElementById('edit-announcement-btn');
             const manageBtn = document.getElementById('manage-investment-btn');
             const investBtn = document.getElementById('invest-now-btn');
             const farmerInfo = document.getElementById('detail-farmer');
+            const investmentSection = document.getElementById('investment-management');
 
             if (announcement.farmerId === currentFarmer.id) {
+                editBtn.classList.remove('hidden');
                 manageBtn.classList.remove('hidden');
                 investBtn.classList.add('hidden');
                 farmerInfo.classList.add('hidden');
+                editBtn.setAttribute('data-id', id);
                 manageBtn.setAttribute('data-id', id);
+                investmentSection.classList.add('hidden');
+                renderInvestments(announcement.investors);
             } else {
+                editBtn.classList.add('hidden');
                 manageBtn.classList.add('hidden');
                 investBtn.classList.remove('hidden');
                 farmerInfo.classList.remove('hidden');
                 document.getElementById('detail-farmer-name').textContent = announcement.farmerName;
                 investBtn.setAttribute('data-id', id);
+                investmentSection.classList.add('hidden');
             }
 
             openModal('announcementDetailModal');
         }
 
-        // Manage investment (mock)
-        function manageInvestment() {
-            const id = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
-            alert(`Managing investments for announcement ID ${id}! (Mock action)`);
-            closeModal('announcementDetailModal');
+        // Toggle investment management section
+        function toggleInvestmentManagement() {
+            const investmentSection = document.getElementById('investment-management');
+            investmentSection.classList.toggle('hidden');
+        }
+
+        // Render investments
+        function renderInvestments(investors) {
+            const investmentList = document.getElementById('investment-list');
+            investmentList.innerHTML = '';
+            if (investors.length === 0) {
+                investmentList.innerHTML = '<tr><td colspan="4" class="p-2 text-center text-gray-600 text-sm">No investments yet.</td></tr>';
+                return;
+            }
+            investors.forEach(investor => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td class="p-2">${investor.name}</td>
+                    <td class="p-2">${investor.amount.toFixed(2)}</td>
+                    <td class="p-2">
+                        <span class="inline-block px-2 py-1 rounded-full text-xs ${investor.status === 'Approved' ? 'bg-lime-100 text-lime-800' : 'bg-yellow-100 text-yellow-800'}">
+                            ${investor.status}
+                        </span>
+                    </td>
+                    <td class="p-2">
+                        ${investor.status === 'Pending' ? `
+                            <button class="bg-teal-600 text-white px-2 py-1 rounded-lg text-xs hover:bg-teal-500 transition-colors duration-200 mr-1" onclick="approveInvestment(${investor.id})">Approve</button>
+                            <button class="bg-red-500 text-white px-2 py-1 rounded-lg text-xs hover:bg-red-400 transition-colors duration-200" onclick="rejectInvestment(${investor.id})">Reject</button>
+                        ` : ''}
+                    </td>
+                `;
+                investmentList.appendChild(row);
+            });
+        }
+
+        // Approve investment (mock)
+        function approveInvestment(investorId) {
+            const announcementId = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
+            const announcement = announcements.find(a => a.id === announcementId);
+            if (announcement) {
+                const investor = announcement.investors.find(i => i.id === investorId);
+                if (investor && investor.status === 'Pending') {
+                    investor.status = 'Approved';
+                    alert(`Investment of ${investor.amount} AZN by ${investor.name} approved!`);
+                    renderInvestments(announcement.investors);
+                }
+            }
+        }
+
+        // Reject investment (mock)
+        function rejectInvestment(investorId) {
+            const announcementId = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
+            const announcement = announcements.find(a => a.id === announcementId);
+            if (announcement) {
+                const investor = announcement.investors.find(i => i.id === investorId);
+                if (investor && investor.status === 'Pending') {
+                    investor.status = 'Rejected';
+                    announcement.currentInvestment -= investor.amount;
+                    announcement.investors = announcement.investors.filter(i => i.id !== investorId);
+                    alert(`Investment of ${investor.amount} AZN by ${investor.name} rejected!`);
+                    viewAnnouncement(announcementId); // Refresh modal
+                }
+            }
         }
 
         // Invest now (mock)
         function investNow() {
             const id = parseInt(document.getElementById('invest-now-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === id);
-            alert(`Investing in "${announcement.title}" by ${announcement.farmerName}! (Mock action)`);
-            closeModal('announcementDetailModal');
+            if (announcement) {
+                alert(`Investing in "${announcement.title}" by ${announcement.farmerName}! (Mock action)`);
+                closeModal('announcementDetailModal');
+            }
         }
 
         // Edit announcement
         function editAnnouncement() {
-            const id = parseInt(document.getElementById('manage-investment-btn').getAttribute('data-id'));
+            const id = parseInt(document.getElementById('edit-announcement-btn').getAttribute('data-id'));
             const announcement = announcements.find(a => a.id === id);
             if (!announcement) return;
 
@@ -611,76 +692,51 @@
         // Render announcements
         function renderAnnouncements(filtered, tabId) {
             const list = document.getElementById(tabId);
-            list.innerHTML = '<div class="shimmer col-span-full h-48 rounded-2xl"></div>'.repeat(3);
+            list.innerHTML = '<div class="bg-gray-100 h-40 rounded-lg"></div>'.repeat(3);
             setTimeout(() => {
                 list.innerHTML = '';
                 if (filtered.length === 0) {
-                    list.innerHTML = '<p class="col-span-full text-center text-gray-600">No announcements found.</p>';
+                    list.innerHTML = '<p class="col-span-full text-center text-gray-600 text-sm">No announcements found.</p>';
                     return;
                 }
                 filtered.forEach(announcement => {
                     const progress = (announcement.currentInvestment / announcement.totalInvestmentRequired) * 100;
                     const rates = calculateInterestRates(announcement.currentInvestment);
                     const card = document.createElement('div');
-                    card.className = `relative bg-white/90 backdrop-blur-lg p-4 rounded-2xl shadow-lg border ${announcement.farmerId === currentFarmer.id ? 'border-lime-200' : 'border-teal-200'} hover:shadow-xl transition-all duration-300 transform hover:scale-107 animate-fade-in`;
+                    card.className = 'bg-white p-4 rounded-lg border border-teal-100 shadow-sm';
                     card.innerHTML = `
-                        ${progress < 100 ? '<span class="absolute top-2 right-2 bg-lime-100 text-lime-800 text-xs font-semibold px-2 py-1 rounded-full animate-pulse">Funding Active</span>' : ''}
-                        <h3 class="text-lg font-semibold ${announcement.farmerId === currentFarmer.id ? 'text-emerald-900' : 'text-teal-700'} mb-2 font-poppins">${announcement.title}</h3>
-                        <p class="text-gray-600 mb-3 line-clamp-2 text-sm">${announcement.description}</p>
+                        <h3 class="text-base font-semibold text-emerald-800 mb-2">${announcement.title}</h3>
+                        <p class="text-gray-600 mb-3 text-sm line-clamp-2">${announcement.description}</p>
                         <p class="text-gray-600 mb-2 text-sm"><strong>Price:</strong> ${announcement.price.toFixed(2)} AZN</p>
                         <p class="text-gray-600 mb-2 text-sm"><strong>Category:</strong> ${announcement.category}</p>
                         ${announcement.farmerId !== currentFarmer.id ? `<p class="text-gray-600 mb-2 text-sm"><strong>Farmer:</strong> ${announcement.farmerName}</p>` : ''}
                         <div class="flex items-center mb-2 text-sm text-gray-600">
-                            <i class="fas fa-coins mr-2 text-lime-200"></i>
-                            <span><strong>Investment:</strong> ${announcement.currentInvestment.toFixed(2)}/${announcement.totalInvestmentRequired.toFixed(2)} AZN</span>
+                            <i class="fas fa-coins mr-1 text-lime-200"></i>
+                            <span>${announcement.currentInvestment.toFixed(2)}/${announcement.totalInvestmentRequired.toFixed(2)} AZN</span>
                         </div>
-                        <div class="w-full bg-gray-200 rounded-full h-2.5 mb-2">
-                            <div class="bg-lime-200 h-2.5 rounded-full transition-all duration-500" style="width: ${Math.min(progress, 100)}%"></div>
+                        <div class="w-full bg-gray-200 rounded-full h-2 mb-2">
+                            <div class="bg-lime-200 h-2 rounded-full transition-all duration-300" style="width: ${Math.min(progress, 100)}%"></div>
                         </div>
-                        <div class="relative inline-block mb-4 text-sm text-gray-600 group">
-                            <span><strong>Rates:</strong> Investor ${rates.investor}%, Regular ${rates.regular}%</span>
-                            <div class="absolute hidden group-hover:block bg-white/95 backdrop-blur-lg p-2 rounded-lg shadow-lg border border-lime-200/50 text-xs z-10 w-48 -top-20 left-0">
-                                <p><strong>Investor Rates:</strong></p>
-                                <p>0-500 AZN: 10%</p>
-                                <p>500-1000 AZN: 12%</p>
-                                <p>1000+ AZN: 15%</p>
-                                <p class="mt-1"><strong>Regular Rates:</strong></p>
-                                <p>0-500 AZN: 5%</p>
-                                <p>500-1000 AZN: 6%</p>
-                                <p>1000+ AZN: 8%</p>
-                            </div>
-                        </div>
-                        <button class="bg-${announcement.farmerId === currentFarmer.id ? 'lime-200' : 'teal-600'} text-${announcement.farmerId === currentFarmer.id ? 'emerald-900' : 'white'} px-4 py-2 rounded-full hover:bg-${announcement.farmerId === currentFarmer.id ? 'lime-100' : 'teal-500'} transition-all duration-300 w-full text-sm font-semibold" onclick="viewAnnouncement(${announcement.id})">View Details</button>
+                        <p class="text-gray-600 mb-3 text-sm">Rates: Investor ${rates.investor}%, Regular ${rates.regular}%</p>
+                        <button class="bg-${announcement.farmerId === currentFarmer.id ? 'lime-200' : 'teal-600'} text-${announcement.farmerId === currentFarmer.id ? 'emerald-800' : 'white'} px-4 py-2 rounded-lg hover:bg-${announcement.farmerId === currentFarmer.id ? 'lime-100' : 'teal-500'} transition-colors duration-200 w-full text-sm transform hover:scale-105" onclick="viewAnnouncement(${announcement.id})">View Details</button>
                     `;
                     list.appendChild(card);
                 });
-            }, 500);
+            }, 300);
         }
 
         // Initial setup
-        createParticles();
         showTab('my-announcements');
     </script>
 
     <!-- Custom CSS -->
     <style>
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes float { 0% { transform: translateY(0); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0); } }
-        @keyframes spinSlow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
-        @keyframes pulse { 0% { opacity: 0.5; } 50% { opacity: 1; } 100% { opacity: 0.5; } }
-        .animate { animation: fadeIn 0.8s ease-out forwards; }
-        .animate-spin-slow { animation: spin 10s linear infinite; }
-        .animate-pulse { animation: pulse 2s ease-in-out infinite; }
-        .modal-content { transition: transform 0.3s ease, opacity 0.3s ease; }
-        .line-strip { display: -webkit-box; -webkit-line-strip: 2; -webkit-box-orient: vertical; overflow: hidden; }
-        .backdrop-blur-lg { backdrop-filter: blur(12px); }
-        .shimmer { background: linear-gradient(90deg, #f0f0f0 25%, #e0e0 0 50%, #f0f0f0 75%); background-size: 200% 100%; animation: shimmer 1.5s infinite; }
-        .tab-btn.active { background-color: #bef264; border-color: #bef264; color: #065f46; }
-        section { opacity: 0; animation: fadeIn 0.8s ease-out forwards; }
-        section:nth-child(2) { animation-delay: 0.2s; }
-        section:nth-child(3) { animation-delay: 0.4s; }
-        .group:hover .group-hover\:block { display: block; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .modal-content { transition: opacity 0.3s ease, transform 0.3s ease; transform: translateY(4px); opacity: 0; }
+        .modal-content.opacity-100 { opacity: 1; transform: translateY(0); }
+        .line-clamp-2 { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .tab-btn.active { background-color: #d9f99d; border-color: #d9f99d; color: #065f46; }
+        .shadow-inner { box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05); }
     </style>
 </body>
 </html>
