@@ -3,231 +3,476 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harvest Together - Crowdfarming Platform</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <title>Panel - CyberBazar</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        body {
+            background-color: #0A0F1F;
+            position: relative;
+            overflow-x: hidden;
         }
-        @keyframes fadeInUp {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(0, 255, 0, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 255, 0, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.05) 0%, transparent 40%);
+            z-index: -1;
+            pointer-events: none;
         }
-        .animate-slide-in {
-            animation: slideIn 0.3s ease-out forwards;
+        .soft-glow {
+            text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
         }
-        .animate-fade-in-up {
-            animation: fadeInUp 0.6s ease-out forwards;
+        canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
         }
-        .backdrop-blur {
-            backdrop-filter: blur(8px);
+        .chart-container {
+            width: 100%;
+            height: 320px; 
+            position: relative;
+        }
+        .dropdown-content {
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+        }
+        .dropdown-content.active {
+            max-height: 200px;
+            opacity: 1;
+        }
+        .dropdown-icon {
+            transition: transform 0.3s ease;
+        }
+        .dropdown-icon.active {
+            transform: rotate(180deg);
         }
     </style>
 </head>
-<body class="font-inter bg-gray-50">
-    <header class="bg-emerald-700 text-white sticky top-0 z-50 shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <div class="flex items-center space-x-3">
-                <img src="Artboard 1.png" alt="CrowdFarm Logo" class="h-10 w-10 rounded-full object-cover">
-                <h1 class="text-2xl font-poppins font-bold">Harvest Together</h1>
+<body class="font-sans text-gray-200 min-h-screen">
+    <div class="flex w-full min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-gray-950 text-gray-200 p-6 flex-shrink-0 shadow-lg transition-all duration-200 hover:w-72 min-h-screen border-r border-green-500/20">
+            <div class="flex items-center space-x-3 mb-12">
+                <i class="fas fa-shield-alt text-3xl text-green-400"></i>
+                <div class="text-3xl font-extrabold tracking-wide text-green-400 soft-glow">CyberBazar</div>
             </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#home" class="text-lg font-poppins font-medium hover:text-lime-300 transition-colors duration-300">Home</a>
-                <a href="#projects" class="text-lg font-poppins font-medium hover:text-lime-300 transition-colors duration-300">Projects</a>
-                <a href="#about" class="text-lg font-poppins font-medium hover:text-lime-300 transition-colors duration-300">About</a>
-                <a href="#contact" class="text-lg font-poppins font-medium hover:text-lime-300 transition-colors duration-300">Contact</a>
-                <a href="register.html" class="text-lg font-poppins font-medium bg-lime-400 text-emerald-900 px-4 py-2 rounded-full hover:bg-lime-300 transition-all duration-300">Get Started</a>
+            <nav>
+                <ul class="space-y-4">
+                    <li>
+                        <a href="index.html" class="flex items-center p-3 rounded-lg bg-green-600 text-white transition-colors duration-150 active" data-page="human-risk">
+                            <i class="fas fa-tachometer-alt mr-3"></i>İdarə Paneli
+                        </a>
+                    </li>
+                    <li>
+                        <a href="campaigns.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="campaigns">
+                            <i class="fas fa-bullhorn mr-3"></i>Simulyasiyalar
+                        </a>
+                    </li>
+                    <li><a href="sirketler.html" class="flex items-center p-3 rounded-lg  hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="companies"><i class="fas fa-building mr-3"></i>Şirkətlər</a></li>
+
+                    <li>
+                        <a href="employees.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="employees">
+                            <i class="fas fa-users mr-3"></i>Əməkdaşlar
+                        </a>
+                    </li>
+                    <li>
+                        <a href="reporting.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="reporting">
+                            <i class="fas fa-chart-bar mr-3"></i>Hesabat
+                        </a>
+                    </li>
+                    <li>
+                        <button class="flex items-center p-3 w-full text-left rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="phishing-content" onclick="toggleDropdown(this)">
+                            <i class="fas fa-fish mr-3"></i>Fișinq Məzmunu
+                            <i class="fas fa-chevron-down ml-auto dropdown-icon"></i>
+                        </button>
+                        <div class="dropdown-content ml-6 mt-2 space-y-2">
+                            <a href="emailphishing.html" class="flex items-center p-2 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150 text-sm">
+                                <i class="fas fa-envelope mr-3"></i>Fișinq E-poçtları
+                            </a>
+                            <a href="phishingwebsite.html" class="flex items-center p-2 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150 text-sm">
+                                <i class="fas fa-globe mr-3"></i>Fișinq Vebsaytları
+                            </a>
+                            <a href="quiz.html" class="flex items-center p-2 rounded-lg bg-transparent text-gray-300 hover:bg-gray-800 hover:text-green-400 transition-colors duration-150 text-sm">
+                                <i class="fas fa-question-circle mr-3"></i>Quizlər
+                            </a>
+                            
+                        </div>  
+                    </li>
+                    <li>
+                        <a href="training-modules.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="training-modules">
+                            <i class="fas fa-book mr-3"></i>Təlim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="pricing.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="subscription-billing">
+                            <i class="fas fa-credit-card mr-3"></i>Abunəlik və Ödəniş
+                        </a>
+                    </li>
+                    <li>
+                        <a href="profile.html" class="flex items-center p-3 rounded-lg hover:bg-gray-800 hover:text-green-400 transition-colors duration-150" data-page="profile">
+                            <i class="fas fa-user mr-3"></i>Profil
+                        </a>
+                    </li>
+                </ul>
             </nav>
-            <button class="md:hidden focus:outline-none" onclick="document.getElementById('mobile-menu').classList.toggle('hidden'); document.getElementById('mobile-menu').classList.toggle('animate-slide-in');">
-                <i class="fas fa-bars text-2xl text-lime-300"></i>
-            </button>
-        </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-emerald-700/95 backdrop-blur text-white px-6 py-8 absolute top-16 right-0 w-3/4 shadow-xl">
-            <a href="#home" class="block py-3 text-lg font-poppins hover:text-lime-300">Home</a>
-            <a href="#projects" class="block py-3 text-lg font-poppins hover:text-lime-300">Projects</a>
-            <a href="#about" class="block py-3 text-lg font-poppins hover:text-lime-300">About</a>
-            <a href="#contact" class="block py-3 text-lg font-poppins hover:text-lime-300">Contact</a>
-            <a href="register.html" class="block py-3 text-lg font-poppins text-lime-300">Get Started</a>
-        </div>
-    </header>
+        </aside>
+        <!-- Main Content -->
+        <main class="flex-1 p-10">
+            <!-- Header -->
+            <header class="flex justify-between items-center mb-10 bg-gray-950/80 p-6 rounded-xl shadow-lg border border-green-500/20">
+                <div class="text-3xl font-bold text-green-400 tracking-tight soft-glow">Welcome, User</div>
+                <div class="flex space-x-4">
+                    <button class="px-5 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
+                        <a href="welcome.html">Başla</a>
+                    </button>
+                    <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 shadow-md">
+                        <a href="pricing.html">Upgrade</a>
+                    </button>
+                    <button class="px-5 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
+                        <a href="profile.html"><i class="fas fa-user"></i></a>
+                    </button>
+                </div>
+            </header>
 
-    <section id="home" class="relative bg-cover bg-center h-[70vh] flex items-center justify-center" style="background-image: url('new (1).jpg')">
-        <div class="absolute inset-0 bg-gradient-to-b from-emerald-700/70 to-lime-500/50"></div>
-        <div class="container mx-auto px-6 text-center text-white relative z-10">
-            <h2 class="text-4xl md:text-6xl font-poppins font-bold mb-6 animate-fade-in-up">Sow the Seeds of Change</h2>
-            <p class="text-lg md:text-xl mb-8 max-w-2xl mx-auto animate-fade-in-up" style="animation-delay: 0.2s;">Support sustainable farming and share the harvest with our vibrant community.</p>
-            <a href="#projects" class="inline-block bg-lime-400 text-emerald-900 px-8 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 shadow-lg hover:shadow-xl font-poppins animate-fade-in-up" style="animation-delay: 0.4s;">Discover Projects</a>
-        </div>
-    </section>
-
-    <section id="projects" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-emerald-800 animate-fade-in-up">Our Green Projects</h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-emerald-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="farm1.webp" alt="Organic Olive Grove" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <i class="fas fa-leaf text-emerald-600 text-lg"></i>
-                            <h3 class="text-xl font-poppins font-semibold text-emerald-700">Organic Olive Grove</h3>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Fund sustainable olive oil production and enjoy a share of the harvest.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="register.html" class="inline-flex items-center text-lime-500 font-poppins text-sm hover:text-lime-600 transition-colors">
-                                Learn More <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                            <span class="text-sm text-emerald-600 font-poppins">75% Funded</span>
-                        </div>
+            <div id="content-area" class="w-full">
+                <div class="tab-content active" data-page="human-risk">
+                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <h2 class="text-green-400 text-xl font-bold tracking-tight soft-glow">Medium Risk — 46%</h2>
+                            <p class="text-gray-300 mt-1">Human Risk Score and Factors</p>
+                            <div class="chart-container mt-6"><canvas id="radarChart"></canvas></div>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <h2 class="text-xl font-bold text-green-400 tracking-tight soft-glow">Risk Timeline and Forecast</h2>
+                            <div class="chart-container mt-6"><canvas id="lineChart"></canvas></div>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">pis</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">ferid fa</span>
+                                <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">yaxsi</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">ferid fa</span>
+                                <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <h2 class="text-xl font-bold text-green-400 mb-4 soft-glow">Latest Dark Web Breaches</h2>
+                            <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">
+                                <a href="/webapp/pricing.html" class="text-white">Upgrade</a>
+                            </button>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">What is dark web monitoring?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">No Data</span>
+                                <span></span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
+                        </section>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-emerald-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="farm2.avif" alt="Beekeeping Project" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <i class="fas fa-bee text-emerald-600 text-lg"></i>
-                            <h3 class="text-xl font-poppins font-semibold text-emerald-700">Beekeeping Project</h3>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Support organic honey production and protect pollinators.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="register.html" class="inline-flex items-center text-lime-500 font-poppins text-sm hover:text-lime-600 transition-colors">
-                                Learn More <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                            <span class="text-sm text-emerald-600 font-poppins">60% Funded</span>
-                        </div>
+
+                <div class="tab-content hidden" data-page="yearly-phishing">
+                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    </div>
+                    <div class="text-center bg-gray-900/80 rounded-xl p-6 shadow-lg mb-6 hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                        <h2 class="text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
+                        <h3 class="text-2xl mt-3 text-gray-300 font-semibold">Phishing Emails Sent</h3>
+                        <p class="text-gray-300 mt-1">Annual total across all campaigns.</p>
+                        <div class="chart-container mt-6"><canvas id="phishingChart"></canvas></div>
+                        <button class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">View Details</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Riskiest Employees</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">f f</span>
+                                <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Performers</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">f f</span>
+                                <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <h2 class="text-xl font-bold text-green-400 mb-4 soft-glow">Latest Dark Web Breaches</h2>
+                            <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">Upgrade to Unlock</button>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">What is dark web monitoring?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">No Data</span>
+                                <span></span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
+                        </section>
                     </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-lg overflow-hidden border border-emerald-100 transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                    <img src="farm3.avif" alt="Organic Vegetable Farm" class="w-full h-48 object-cover">
-                    <div class="p-6">
-                        <div class="flex items-center space-x-2 mb-3">
-                            <i class="fas fa-carrot text-emerald-600 text-lg"></i>
-                            <h3 class="text-xl font-poppins font-semibold text-emerald-700">Organic Vegetable Farm</h3>
-                        </div>
-                        <p class="text-gray-600 text-sm mb-4">Grow fresh, organic produce for local communities.</p>
-                        <div class="flex items-center justify-between">
-                            <a href="register.html" class="inline-flex items-center text-lime-500 font-poppins text-sm hover:text-lime-600 transition-colors">
-                                Learn More <i class="fas fa-arrow-right ml-2"></i>
-                            </a>
-                            <span class="text-sm text-emerald-600 font-poppins">85% Funded</span>
-                        </div>
+
+                <div class="tab-content hidden" data-page="yearly-training">
+                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    </div>
+                    <div class="text-center bg-gray-900/80 rounded-xl p-6 shadow-lg mb-6 hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                        <h2 class="text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
+                        <h3 class="text-2xl mt-3 text-gray-300 font-semibold">Assigned Trainings</h3>
+                        <p class="text-gray-300 mt-1">Annual total across all campaigns.</p>
+                        <div class="chart-container mt-6"><canvas id="trainingChart"></canvas></div>
+                        <button class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">View Details</button>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Riskiest Employees</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">f f</span>
+                                <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Performers</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">f f</span>
+                                <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <h2 class="text-xl font-bold text-green-400 mb-4 soft-glow">Latest Dark Web Breaches</h2>
+                            <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">Upgrade to Unlock</button>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">What is dark web monitoring?</p>
+                        </section>
+                        <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
+                            <div class="flex justify-between items-center mb-4">
+                                <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
+                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                            </div>
+                            <div class="flex justify-between py-3">
+                                <span class="text-sm font-medium">test@tem.az</span>
+                                <span class="font-medium">No Data</span>
+                                <span></span>
+                            </div>
+                            <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
+                        </section>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </main>
+    </div>
 
-    <section id="about" class="py-16 bg-gradient-to-r from-emerald-50 to-lime-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-emerald-800 animate-fade-in-up">Why Harvest Together?</h2>
-            <div class="flex flex-col md:flex-row items-center gap-8">
-                <div class="md:w-1/2">
-                    <p class="text-gray-700 text-base leading-relaxed animate-fade-in-up" style="animation-delay: 0.2s;">
-                        Harvest Together connects passionate farmers with supporters to create a sustainable future. Fund eco-friendly projects and share the rewards of green agriculture.
-                    </p>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="Artboard 1.png" alt="About Harvest Together" class="w-full max-w-xs mx-auto rounded-full shadow-lg">
-                </div>
-            </div>
-        </div>
-    </section>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabLinks = document.querySelectorAll('.tab-link');
+            tabLinks.forEach(tabLink => {
+                tabLink.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    tabLinks.forEach(t => {
+                        t.classList.remove('bg-green-600', 'text-white');
+                        t.classList.add('bg-gray-700', 'text-gray-200');
+                    });
+                    tabLink.classList.remove('bg-gray-700', 'text-gray-200');
+                    tabLink.classList.add('bg-green-600', 'text-white');
+                    const tab = tabLink.getAttribute('data-tab');
+                    document.querySelectorAll('.tab-content').forEach(content => {
+                        content.classList.toggle('active', content.getAttribute('data-page') === tab);
+                        content.classList.toggle('hidden', content.getAttribute('data-page') !== tab);
+                    });
+                });
+            });
 
-    <section id="contact" class="py-16 bg-gray-50">
-        <div class="container mx-auto px-6">
-            <h2 class="text-3xl md:text-4xl font-poppins font-bold text-center mb-12 text-emerald-800 animate-fade-in-up">Get in Touch</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100">
-                    <h3 class="text-xl font-poppins font-semibold text-emerald-700 mb-6 text-center">Send Us a Message</h3>
-                    <div class="mb-6">
-                        <label for="name" class="block text-gray-700 font-poppins text-sm mb-2">Name</label>
-                        <input type="text" id="name" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none transition-all duration-300" placeholder="Your Name">
-                    </div>
-                    <div class="mb-6">
-                        <label for="email" class="block text-gray-700 font-poppins text-sm mb-2">Email</label>
-                        <input type="email" id="email" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none transition-all duration-300" placeholder="Your Email">
-                    </div>
-                    <div class="mb-6">
-                        <label for="message" class="block text-gray-700 font-poppins text-sm mb-2">Message</label>
-                        <textarea id="message" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lime-400 focus:border-lime-400 outline-none transition-all duration-300" rows="5" placeholder="Your Message"></textarea>
-                    </div>
-                    <button class="w-full bg-lime-400 text-emerald-900 px-6 py-3 rounded-full hover:bg-lime-300 transition-all duration-300 font-poppins shadow-lg hover:shadow-xl">Send Message</button>
-                </div>
-                <div class="bg-white p-8 rounded-2xl shadow-lg border border-emerald-100 flex flex-col items-center justify-center">
-                    <h3 class="text-xl font-poppins font-semibold text-emerald-700 mb-6 text-center">Contact Information</h3>
-                    <p class="text-gray-600 text-sm mb-6 text-center max-w-xs">Reach out to us for any questions or to join our sustainable farming community!</p>
-                    <ul class="space-y-3 text-gray-700 text-sm text-center">
-                        <li class="flex items-center justify-center">
-                            <i class="fas fa-envelope text-lime-500 mr-2"></i>
-                            <a href="mailto:harvesttogether07@gmail.com" class="hover:text-lime-600 transition-colors">harvesttogether07@gmail.com</a>
-                        </li>
-                        <li class="flex items-center justify-center">
-                            <i class="fas fa-phone text-lime-500 mr-2"></i>
-                            <span>+994 77 717 32 17</span>
-                        </li>
-                        <li class="flex items-center justify-center">
-                            <i class="fas fa-map-marker-alt text-lime-500 mr-2"></i>
-                            <span>Khankendi, Azerbaijan</span>
-                        </li>
-                        <li class="flex items-center justify-center">
-                            <i class="fas fa-clock text-lime-500 mr-2"></i>
-                            <span>Mon-Fri: 9 AM - 5 PM</span>
-                        </li>
-                        <li class="flex justify-center space-x-4 mt-4">
-                            <a href="#" class="text-2xl text-lime-500 hover:text-lime-600 transition-transform duration-300 hover:scale-110"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-2xl text-lime-500 hover:text-lime-600 transition-transform duration-300 hover:scale-110"><i class="fab fa-twitter"></i></a>
-                            <a href="#" class="text-2xl text-lime-500 hover:text-lime-600 transition-transform duration-300 hover:scale-110"><i class="fab fa-instagram"></i></a>
-                            <a href="#" class="text-2xl text-lime-500 hover:text-lime-600 transition-transform duration-300 hover:scale-110"><i class="fab fa-linkedin"></i></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+            const radarCtx = document.getElementById('radarChart').getContext('2d');
+            new Chart(radarCtx, {
+                type: 'radar',
+                data: {
+                    labels: ['Phishing Risk', 'Breach Risk', 'Engagement Risk', 'Intelligence Risk'],
+                    datasets: [{
+                        label: 'Human Risk Factors',
+                        data: [65, 45, 50, 70],
+                        backgroundColor: 'rgba(52, 211, 153, 0.2)',
+                        borderColor: '#34D399',
+                        borderWidth: 2,
+                        pointBackgroundColor: '#34D399'
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, 
+                    scales: {
+                        r: {
+                            beginAtZero: true,
+                            max: 100,
+                            ticks: {
+                                stepSize: 20,
+                                color: '#6B7280',
+                                display: false 
+                            },
+                            grid: { color: '#374151' },
+                            angleLines: { color: '#374151' }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { font: { size: 14 }, color: '#d1d5db' }
+                        }
+                    }
+                }
+            });
 
-    <footer class="bg-emerald-800 text-white py-12">
-        <div class="container mx-auto px-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-                <div>
-                    <div class="flex items-center justify-center md:justify-start space-x-3 mb-4">
-                        <img src="Artboard 1.png" alt="CrowdFarm Logo" class="h-10 w-10 rounded-full object-cover">
-                        <h3 class="text-lg font-poppins font-bold">Harvest Together</h3>
-                    </div>
-                    <p class="text-sm text-gray-200">Join our mission to make farming sustainable and rewarding. Support farmers, share harvests, and grow a greener future.</p>
-                </div>
-                <div>
-                    <h3 class="text-lg font-poppins font-bold mb-4">Quick Links</h3>
-                    <div class="grid grid-cols-2 gap-2 text-sm">
-                        <a href="#home" class="hover:text-lime-300 transition-colors duration-300">Home</a>
-                        <a href="#projects" class="hover:text-lime-300 transition-colors duration-300">Projects</a>
-                        <a href="#about" class="hover:text-lime-300 transition-colors duration-300">About</a>
-                        <a href="#contact" class="hover:text-lime-300 transition-colors duration-300">Contact</a>
-                    </div>
-                </div>
-                <div>
-                    <h3 class="text-lg font-poppins font-bold mb-4">Contact Us</h3>
-                    <ul class="space-y-2 text-sm">
-                        <li class="flex items-center justify-center md:justify-start">
-                            <i class="fas fa-envelope mr-2 text-lime-300"></i>
-                            <a href="mailto:harvesttogether07@gmail.com" class="hover:text-lime-300 transition-colors">harvesttogether07@gmail.com</a>
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <i class="fas fa-phone mr-2 text-lime-300"></i>
-                            <span>+994 77 717 32 17</span>
-                        </li>
-                        <li class="flex items-center justify-center md:justify-start">
-                            <i class="fas fa-map-marker-alt mr-2 text-lime-300"></i>
-                            <span>Khankendi, Azerbaijan</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div class="mt-8 text-center text-sm text-gray-200 border-t border-emerald-600 pt-6">
-                <p>© 2025 Harvest Together. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+            const lineCtx = document.getElementById('lineChart').getContext('2d');
+            new Chart(lineCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Risk Trend',
+                        data: [40, 45, 50, 46, 48, 47],
+                        borderColor: '#10B981',
+                        backgroundColor: 'rgba(52, 211, 153, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, 
+                    scales: {
+                        y: { beginAtZero: true, max: 100, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
+                        x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { font: { size: 14 }, color: '#d1d5db' }
+                        }
+                    }
+                }
+            });
+
+            const phishingCtx = document.getElementById('phishingChart').getContext('2d');
+            new Chart(phishingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Phishing Emails',
+                        data: [120, 150, 90, 110],
+                        backgroundColor: '#34D399',
+                        borderColor: '#10B981',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, 
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
+                        x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { font: { size: 14 }, color: '#d1d5db' }
+                        }
+                    }
+                }
+            });
+
+            const trainingCtx = document.getElementById('trainingChart').getContext('2d');
+            new Chart(trainingCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Assigned Trainings',
+                        data: [80, 100, 70, 90],
+                        backgroundColor: '#34D399',
+                        borderColor: '#10B981',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    maintainAspectRatio: false, 
+                    scales: {
+                        y: { beginAtZero: true, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
+                        x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
+                    },
+                    plugins: {
+                        legend: {
+                            labels: { font: { size: 14 }, color: '#d1d5db' }
+                        }
+                    }
+                }
+            });
+        });
+
+        function toggleDropdown(button) {
+            const dropdownContent = button.nextElementSibling;
+            const icon = button.querySelector('.dropdown-icon');
+            dropdownContent.classList.toggle('active');
+            icon.classList.toggle('active');
+            icon.classList.toggle('fa-chevron-down');
+            icon.classList.toggle('fa-chevron-up');
+        }
+    </script>
 </body>
 </html>
