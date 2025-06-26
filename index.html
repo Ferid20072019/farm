@@ -28,7 +28,7 @@
             pointer-events: none;
         }
         .soft-glow {
-            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4); 
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4);
         }
         canvas {
             display: block;
@@ -37,7 +37,7 @@
         }
         .chart-container {
             width: 100%;
-            height: 320px; 
+            height: 320px;
             position: relative;
         }
         .dropdown-content {
@@ -47,7 +47,7 @@
             overflow: hidden;
         }
         .dropdown-content.active {
-            max-height: 200px; 
+            max-height: 200px;
             opacity: 1;
         }
         .dropdown-icon {
@@ -59,12 +59,12 @@
         #sidebar-overlay {
             position: fixed;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.7); 
+            background-color: rgba(0, 0, 0, 1);
             z-index: 30;
-            display: none; 
+            display: none;
         }
         #sidebar-overlay.active {
-            display: block; 
+            display: block;
         }
     </style>
 </head>
@@ -118,7 +118,6 @@
                             <a href="quiz.html" class="flex items-center p-2 rounded-lg bg-transparent text-gray-300 hover:bg-gray-800 hover:text-green-400 transition-colors duration-150 text-sm">
                                 <i class="fas fa-question-circle mr-3"></i>Quizlər
                             </a>
-                            
                         </div>  
                     </li>
                     <li>
@@ -344,7 +343,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const sidebar = document.getElementById('sidebar');
-            const sidebarOverlay = document.getElementById('sidebar-overlay'); 
+            const sidebarOverlay = document.getElementById('sidebar-overlay');
 
             mobileMenuButton.addEventListener('click', () => {
                 sidebar.classList.toggle('-translate-x-full');
@@ -392,7 +391,7 @@
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false, 
+                    maintainAspectRatio: false,
                     scales: {
                         r: {
                             beginAtZero: true,
@@ -400,7 +399,7 @@
                             ticks: {
                                 stepSize: 20,
                                 color: '#6B7280',
-                                display: false 
+                                display: false
                             },
                             grid: { color: '#374151' },
                             angleLines: { color: '#374151' }
@@ -429,7 +428,7 @@
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false, 
+                    maintainAspectRatio: false,
                     scales: {
                         y: { beginAtZero: true, max: 100, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
                         x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
@@ -456,7 +455,7 @@
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false, 
+                    maintainAspectRatio: false,
                     scales: {
                         y: { beginAtZero: true, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
                         x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
@@ -483,7 +482,7 @@
                     }]
                 },
                 options: {
-                    maintainAspectRatio: false, 
+                    maintainAspectRatio: false,
                     scales: {
                         y: { beginAtZero: true, ticks: { color: '#6B7280' }, grid: { color: '#374151' } },
                         x: { ticks: { color: '#6B7280' }, grid: { color: '#374151' } }
