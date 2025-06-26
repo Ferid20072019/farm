@@ -12,6 +12,7 @@
             background-color: #0A0F1F;
             position: relative;
             overflow-x: hidden;
+            font-family: 'Inter', sans-serif;
         }
         body::before {
             content: '';
@@ -27,7 +28,7 @@
             pointer-events: none;
         }
         .soft-glow {
-            text-shadow: 0 0 3px rgba(0, 255, 0, 0.3);
+            text-shadow: 0 0 5px rgba(0, 255, 0, 0.4); 
         }
         canvas {
             display: block;
@@ -46,7 +47,7 @@
             overflow: hidden;
         }
         .dropdown-content.active {
-            max-height: 200px;
+            max-height: 200px; 
             opacity: 1;
         }
         .dropdown-icon {
@@ -55,12 +56,25 @@
         .dropdown-icon.active {
             transform: rotate(180deg);
         }
+        #sidebar-overlay {
+            position: fixed;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.7); 
+            z-index: 30;
+            display: none; 
+        }
+        #sidebar-overlay.active {
+            display: block; 
+        }
     </style>
 </head>
 <body class="font-sans text-gray-200 min-h-screen">
-    <div class="flex w-full min-h-screen">
-        <!-- Sidebar -->
-        <aside class="w-64 bg-gray-950 text-gray-200 p-6 flex-shrink-0 shadow-lg transition-all duration-200 hover:w-72 min-h-screen border-r border-green-500/20">
+    <div class="flex flex-col md:flex-row w-full min-h-screen">
+        <button id="mobile-menu-button" class="md:hidden fixed top-4 left-4 z-50 p-3 rounded-full bg-gray-700 text-white shadow-lg hover:bg-gray-600 transition-colors duration-200">
+            <i class="fas fa-bars text-xl"></i>
+        </button>
+
+        <aside id="sidebar" class="w-64 bg-gray-950 text-gray-200 p-6 flex-shrink-0 shadow-lg transition-all duration-300 transform -translate-x-full fixed h-full z-40 md:relative md:translate-x-0 md:h-auto md:min-h-screen md:w-64 border-r border-green-500/20 rounded-r-xl md:rounded-none">
             <div class="flex items-center space-x-3 mb-12">
                 <i class="fas fa-shield-alt text-3xl text-green-400"></i>
                 <div class="text-3xl font-extrabold tracking-wide text-green-400 soft-glow">CyberBazar</div>
@@ -125,19 +139,20 @@
                 </ul>
             </nav>
         </aside>
-        <!-- Main Content -->
-        <main class="flex-1 p-10">
-            <!-- Header -->
-            <header class="flex justify-between items-center mb-10 bg-gray-950/80 p-6 rounded-xl shadow-lg border border-green-500/20">
-                <div class="text-3xl font-bold text-green-400 tracking-tight soft-glow">Welcome, User</div>
-                <div class="flex space-x-4">
-                    <button class="px-5 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
+
+        <div id="sidebar-overlay" class="md:hidden"></div>
+
+        <main class="flex-1 p-4 md:p-10">
+            <header class="flex flex-col sm:flex-row justify-between items-center mb-6 md:mb-10 bg-gray-950/80 p-4 md:p-6 rounded-xl shadow-lg border border-green-500/20">
+                <div class="text-2xl md:text-3xl font-bold text-green-400 tracking-tight soft-glow mb-4 sm:mb-0">Welcome, User</div>
+                <div class="flex flex-wrap justify-center sm:justify-end gap-3 sm:space-x-4">
+                    <button class="px-4 py-2 sm:px-5 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
                         <a href="welcome.html">Başla</a>
                     </button>
-                    <button class="px-5 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 shadow-md">
+                    <button class="px-4 py-2 sm:px-5 sm:py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 shadow-md">
                         <a href="pricing.html">Upgrade</a>
                     </button>
-                    <button class="px-5 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
+                    <button class="px-4 py-2 sm:px-5 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-gray-600 transition-colors duration-200 shadow-md">
                         <a href="profile.html"><i class="fas fa-user"></i></a>
                     </button>
                 </div>
@@ -145,10 +160,10 @@
 
             <div id="content-area" class="w-full">
                 <div class="tab-content active" data-page="human-risk">
-                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
-                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="human-risk">Human Risk</button>
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    <div class="flex flex-wrap space-x-2 sm:space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 mb-2 sm:mb-0" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-training">Training</button>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
@@ -163,11 +178,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">pis</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">ferid fa</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">ferid fa</span>
                                 <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
@@ -175,11 +190,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">yaxsi</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">ferid fa</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">ferid fa</span>
                                 <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
@@ -194,11 +209,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">No Data</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">No Data</span>
                                 <span></span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
@@ -207,14 +222,14 @@
                 </div>
 
                 <div class="tab-content hidden" data-page="yearly-phishing">
-                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="human-risk">Human Risk</button>
-                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    <div class="flex flex-wrap space-x-2 sm:space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-training">Training</button>
                     </div>
                     <div class="text-center bg-gray-900/80 rounded-xl p-6 shadow-lg mb-6 hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
-                        <h2 class="text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
-                        <h3 class="text-2xl mt-3 text-gray-300 font-semibold">Phishing Emails Sent</h3>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
+                        <h3 class="text-xl sm:text-2xl mt-3 text-gray-300 font-semibold">Phishing Emails Sent</h3>
                         <p class="text-gray-300 mt-1">Annual total across all campaigns.</p>
                         <div class="chart-container mt-6"><canvas id="phishingChart"></canvas></div>
                         <button class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">View Details</button>
@@ -223,11 +238,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Riskiest Employees</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">f f</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">f f</span>
                                 <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
@@ -235,11 +250,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Performers</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">f f</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">f f</span>
                                 <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
@@ -252,11 +267,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">No Data</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">No Data</span>
                                 <span></span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
@@ -265,14 +280,14 @@
                 </div>
 
                 <div class="tab-content hidden" data-page="yearly-training">
-                    <div class="flex space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="human-risk">Human Risk</button>
-                        <button class="tab-link px-6 py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200" data-tab="yearly-phishing">Phishing</button>
-                        <button class="tab-link px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200" data-tab="yearly-training">Training</button>
+                    <div class="flex flex-wrap space-x-2 sm:space-x-4 mb-6 bg-gray-900/80 p-4 rounded-xl shadow-lg border border-green-500/20">
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="human-risk">Human Risk</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-gray-700 text-gray-200 rounded-lg hover:bg-green-600 hover:text-white transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-phishing">Phishing</button>
+                        <button class="tab-link px-4 py-2 sm:px-6 sm:py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200 mb-2 sm:mb-0" data-tab="yearly-training">Training</button>
                     </div>
                     <div class="text-center bg-gray-900/80 rounded-xl p-6 shadow-lg mb-6 hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
-                        <h2 class="text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
-                        <h3 class="text-2xl mt-3 text-gray-300 font-semibold">Assigned Trainings</h3>
+                        <h2 class="text-4xl sm:text-5xl font-extrabold text-green-400 tracking-tight soft-glow">0</h2>
+                        <h3 class="text-xl sm:text-2xl mt-3 text-gray-300 font-semibold">Assigned Trainings</h3>
                         <p class="text-gray-300 mt-1">Annual total across all campaigns.</p>
                         <div class="chart-container mt-6"><canvas id="trainingChart"></canvas></div>
                         <button class="mt-6 px-6 py-2 bg-green-600 text-white rounded-lg hover:bg-green-500 transition-colors duration-200">View Details</button>
@@ -281,11 +296,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Riskiest Employees</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">f f</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">f f</span>
                                 <span class="bg-orange-900 text-orange-400 px-3 py-1 rounded-full text-sm font-semibold">58% - Medium</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How is risk calculated?</p>
@@ -293,11 +308,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Top 5 Performers</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3 border-b border-green-500/20">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">f f</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3 border-b border-green-500/20">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">f f</span>
                                 <span class="bg-green-900 text-green-400 px-3 py-1 rounded-full text-sm font-semibold">0</span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How are badges scored?</p>
@@ -310,11 +325,11 @@
                         <section class="bg-gray-900/80 rounded-xl p-6 shadow-lg hover:shadow-lg transition-shadow duration-200 border border-green-500/20">
                             <div class="flex justify-between items-center mb-4">
                                 <h2 class="text-xl font-bold text-green-400 soft-glow">Latest Phishing Reports</h2>
-                                <a href="#" class="text-green-400 hover:underline font-medium">View All</a>
+                                <a href="#" class="text-green-400 hover:underline font-medium text-sm">View All</a>
                             </div>
-                            <div class="flex justify-between py-3">
-                                <span class="text-sm font-medium">test@tem.az</span>
-                                <span class="font-medium">No Data</span>
+                            <div class="flex flex-col sm:flex-row justify-between py-3">
+                                <span class="text-sm font-medium mb-2 sm:mb-0">test@tem.az</span>
+                                <span class="font-medium mb-2 sm:mb-0">No Data</span>
                                 <span></span>
                             </div>
                             <p class="text-sm text-gray-300 mt-4 hover:text-gray-200 cursor-pointer">How does reporting work?</p>
@@ -327,6 +342,22 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const sidebar = document.getElementById('sidebar');
+            const sidebarOverlay = document.getElementById('sidebar-overlay'); 
+
+            mobileMenuButton.addEventListener('click', () => {
+                sidebar.classList.toggle('-translate-x-full');
+                sidebar.classList.toggle('translate-x-0');
+                sidebarOverlay.classList.toggle('active');
+            });
+
+            sidebarOverlay.addEventListener('click', () => {
+                sidebar.classList.add('-translate-x-full');
+                sidebar.classList.remove('translate-x-0');
+                sidebarOverlay.classList.remove('active');
+            });
+
             const tabLinks = document.querySelectorAll('.tab-link');
             tabLinks.forEach(tabLink => {
                 tabLink.addEventListener('click', (e) => {
@@ -337,6 +368,7 @@
                     });
                     tabLink.classList.remove('bg-gray-700', 'text-gray-200');
                     tabLink.classList.add('bg-green-600', 'text-white');
+                    
                     const tab = tabLink.getAttribute('data-tab');
                     document.querySelectorAll('.tab-content').forEach(content => {
                         content.classList.toggle('active', content.getAttribute('data-page') === tab);
